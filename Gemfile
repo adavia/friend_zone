@@ -8,10 +8,16 @@ gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 # Use haml templating
 gem 'haml-rails', '~> 0.9'
+# Add fontawesome icons
+gem 'font-awesome-rails', '~> 4.3'
 # Use bootstrap css framework
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# Use simple form
+gem 'simple_form'
+# Use device to manage users
+gem 'devise'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

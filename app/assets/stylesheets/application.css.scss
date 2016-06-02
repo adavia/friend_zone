@@ -1,0 +1,33 @@
+@import "_variables";
+@import "_mixins";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+body {
+  padding-top: 60px;
+  background: #f5f8fa;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 900;
+}
+
+.navbar-form {
+  padding-top: 2px;
+  .form-control {
+    height: 30px;
+  }
+}
+
+.navbar-brand {
+  font-family: "Shadows Into Light", cursive;
+  font-size: 20px;
+  color: #b84d45;
+}
+
+form {
+  label {
+    font-weight: 600;
+  }
+}
