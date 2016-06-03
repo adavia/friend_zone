@@ -1,0 +1,8 @@
+.wrapper-auth {
+  padding: 10px 25px 25px 25px;
+}
+
+.auth-links {
+  @extend .list-unstyled;
+  margin-top: 10px;
+}

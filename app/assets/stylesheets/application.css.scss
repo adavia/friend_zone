@@ -3,6 +3,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import "users";
+@import "posts";
 
 body {
   padding-top: 60px;
@@ -30,4 +32,17 @@ form {
   label {
     font-weight: 600;
   }
+  .form-control:focus {
+    box-shadow: none;
+  }
+  .has-error {
+    .form-control:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+.wrapper {
+  background-color: #fff;
+  border: 1px solid #e1e8ed;
 }
