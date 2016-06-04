@@ -1,55 +1,8 @@
 .row
   .col-sm-6
     .wrapper
-      .post
-        .post-heading
-          .pull-left.image
-            %img.img-circle.avatar{alt: "user profile image",
-              src: "http://bootdey.com/img/Content/user_1.jpg"}
-          .pull-left.meta
-            .title.h5
-              %a{href: "#"}
-                %b Ryan Haywood
-              made a post.
-            %h6.text-muted.time 1 minute ago
-        .post-description
-          %p Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers, Devise is an engine, and this means that its controllers and views live inside the gem, rather than inside your application. In order to customize these views, you’ll need to copy them into your application.
-          .stats
-            %a.btn.btn-default.stat-item{:href => "#"}
-              %i.fa.fa-thumbs-up.icon>
-              2
-            %a.btn.btn-default.stat-item{:href => "#"}
-              %i.fa.fa-share.icon>
-              12
-        .post-footer
-          .input-group
-            %input.form-control{:placeholder => "Add a comment", :type => "text"}/
-            %span.input-group-addon
-              %a{:href => "#"}
-                %i.fa.fa-edit
-          %ul.comments-list
-            %li.comment
-              %a.pull-left{:href => "#"}
-                %img.avatar{:alt => "avatar", :src => "http://bootdey.com/img/Content/user_1.jpg"}/
-              .comment-body
-                .comment-heading
-                  %h4.user Gavino Free
-                  %h6.text-muted.time 5 minutes ago
-                %p Sure, oooooooooooooooohhhhhhhhhhhhhhhh
-            %li.comment
-              %a.pull-left{:href => "#"}
-                %img.avatar{:alt => "avatar", :src => "http://bootdey.com/img/Content/user_1.jpg"}/
-              .comment-body
-                .comment-heading
-                  %h4.user Gavino Free
-                  %h6.text-muted.time 5 minutes ago
-                %p Sure, oooooooooooooooohhhhhhhhhhhhhhhh
-            %li.comment
-              %a.pull-left{:href => "#"}
-                %img.avatar{:alt => "avatar", :src => "http://bootdey.com/img/Content/user_1.jpg"}/
-              .comment-body
-                .comment-heading
-                  %h4.user Gavino Free
-                  %h6.text-muted.time 5 minutes ago
-                %p Sure, oooooooooooooooohhhhhhhhhhhhhhhh
+      #form-post
+        = render "form", post: @post
+    .wrapper
+      = render @posts
 

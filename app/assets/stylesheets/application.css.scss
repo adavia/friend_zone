@@ -15,6 +15,11 @@ h1, h2, h3, h4, h5 {
   font-weight: 900;
 }
 
+a {
+  color: #222;
+  text-decoration: none !important;
+}
+
 .navbar-form {
   padding-top: 2px;
   .form-control {
@@ -45,4 +50,5 @@ form {
 .wrapper {
   background-color: #fff;
   border: 1px solid #e1e8ed;
+  margin-bottom: 20px;
 }

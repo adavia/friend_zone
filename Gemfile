@@ -18,6 +18,12 @@ gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 # Use device to manage users
 gem 'devise'
+# Add File Uploading
+gem 'carrierwave'
+# Image manipulation
+gem 'mini_magick'
+# Handle ajax File Uploads
+gem 'jquery-form-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

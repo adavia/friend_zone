@@ -2,42 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.post {
-  .post-heading {
-    height: 80px;
-    padding: 20px 15px;
-    .avatar {
-      width: 60px;
-      height: 60px;
-      display: block;
-      margin-right: 15px;
-    }
-  }
+#form-post {
+  padding: 20px;
 }
 
 .post:not(:first-child) {
   border-top: 1px solid #e1e8ed;
 }
 
+.post-heading {
+  height: 80px;
+  padding: 20px 15px;
+  .avatar {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin-right: 15px;
+  }
+}
+
 .meta {
   .title {
     margin-bottom: 0;
-    a {
-      color: black;
-      &:hover {
-        color: #aaaaaa;
-      }
-    }
   }
   .time {
     margin-top: 8px;
     color: #999;
   }
-}
-
-.post-image .image {
-  width: 100%;
-  height: auto;
 }
 
 .post-description {
@@ -58,8 +49,9 @@
 }
 
 .post-footer {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #e1e8ed;
   padding: 15px;
+  background-color: #f6f7f9;
   .input-group-addon a {
     color: #454545;
   }

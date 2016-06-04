@@ -1,0 +1,36 @@
+.post
+  .post-heading
+    .pull-left.image
+      %img.img-circle.avatar{alt: "User profile", src: "/assets/no_user.png"}
+    .pull-left.meta
+      .title.h5
+        = link_to content_tag(:b, post.user), edit_user_registration_path
+        made a post.
+      %h6.text-muted.time
+        = time_ago_in_words(post.created_at)
+  .post-description
+    %p
+      = post.body
+    .stats
+      %a.btn.btn-sm.btn-default.stat-item{href: "#"}
+        %i.fa.fa-thumbs-up.icon>
+        2
+      %a.btn.btn-sm.btn-default.stat-item{href: "#"}
+        %i.fa.fa-share.icon>
+        12
+  .post-footer
+    .input-group
+      %input.form-control{placeholder: "Add a comment", type: "text"}
+      %span.input-group-addon
+        %a{href: "#"}
+          %i.fa.fa-edit
+    %ul.comments-list
+      %li.comment
+        %a.pull-left{href: "#"}
+          %img.avatar{alt: "avatar",
+          src: "http://bootdey.com/img/Content/user_1.jpg"}
+        .comment-body
+          .comment-heading
+            %h4.user Gavino Free
+            %h6.text-muted.time 5 minutes ago
+          %p Sure, oooooooooooooooohhhhhhhhhhhhhhhh
