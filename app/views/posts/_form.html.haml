@@ -1,5 +1,10 @@
-= simple_form_for(post, data: { behavior: "new-post" }) do |f|
-  = f.input :body, label: false, as: :text,
-  placeholder: "What are you thinking?", input_html: {rows: 3}
+= simple_form_for(post, html: { multipart: true, autocomplete: :off },
+  data: { behavior: "submit-post" }) do |f|
+  = f.input :body, label: false, placeholder: "What are you thinking?"
   .clearfix
-    = f.button :submit, "Publish", class: "btn btn-sm pull-right"
+  - if !post.persisted?
+    %span.btn-file
+      = fa_icon "camera", text: "Upload"
+      = file_field_tag "images[]", multiple: true,
+      data: { behavior: "upload-post-image" }
+    = f.button :submit, "Publish post", class: "btn btn-sm pull-right"

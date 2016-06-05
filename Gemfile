@@ -7,7 +7,7 @@ gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use haml templating
-gem 'haml-rails', '~> 0.9'
+gem 'haml-rails'
 # Add fontawesome icons
 gem 'font-awesome-rails', '~> 4.3'
 # Use bootstrap css framework
@@ -19,7 +19,7 @@ gem 'simple_form'
 # Use device to manage users
 gem 'devise'
 # Add File Uploading
-gem 'carrierwave'
+gem 'carrierwave', '~> 0.10.0'
 # Image manipulation
 gem 'mini_magick'
 # Handle ajax File Uploads

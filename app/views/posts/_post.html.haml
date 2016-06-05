@@ -11,6 +11,10 @@
   .post-description
     %p
       = post.body
+      - if post.images.any?
+        .post-images
+          .row
+            = render post.images
     .stats
       %a.btn.btn-sm.btn-default.stat-item{href: "#"}
         %i.fa.fa-thumbs-up.icon>

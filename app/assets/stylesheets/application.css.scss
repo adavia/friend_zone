@@ -52,3 +52,45 @@ form {
   border: 1px solid #e1e8ed;
   margin-bottom: 20px;
 }
+
+.btn-file {
+  @extend .btn;
+  @extend .btn-default;
+  @extend .btn-sm;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+.default-message {
+  padding: 10px 25px 25px 25px;
+}
+
+.wrapper-img {
+  margin-top: 10px;
+  padding: 5px;
+  border: 1px dashed #aaa;
+}
+
+.img-preview {
+  @extend .img-responsive;
+  @extend .img-thumbnail;
+  width: 80px;
+  height: 80px;
+  margin: 5px;
+}

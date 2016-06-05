@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @posts = Post.all
     @post = current_user.posts.build
@@ -9,18 +11,12 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html {
-          redirect_to root_path
-        }
+        upload_files
         format.js   {}
         format.json {
           render json: @post, status: :created, location: @post
         }
       else
-        @posts = []
-        format.html {
-          render :index
-        }
         format.js   {}
         format.json {
           render json: @post.errors, status: :unprocessable_entity
@@ -31,7 +27,15 @@ class PostsController < ApplicationController
 
   private
 
+  def upload_files
+    if params[:images] && params[:images] != [""]
+      params[:images].each do |image|
+        @post.images.create(file: image)
+      end
+    end
+  end
+
   def post_params
-    params.require(:post).permit(:body)
+    params.require(:post).permit(:body, :images)
   end
 end
