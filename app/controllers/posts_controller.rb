@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :post_owner!, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -25,7 +27,49 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    whitelisted_params = post_params
+    whitelisted_params.delete(:images)
+
+    respond_to do |format|
+      if @post.update(whitelisted_params)
+        format.js   {}
+        format.json {
+          render json: @post, status: :created, location: @post
+        }
+      else
+        format.js   {}
+        format.json {
+          render json: @post.errors, status: :unprocessable_entity
+        }
+      end
+    end
+  end
+
+  def destroy
+    @post.destroy
+
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
   private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def post_owner!
+    authenticate_user!
+
+    if @post.user != current_user
+      render js: "alert('Hello Rails');"
+    end
+  end
 
   def upload_files
     if params[:images] && params[:images] != [""]

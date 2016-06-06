@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :posts do
+  resources :posts, only: [:index, :create, :edit, :update, :destroy] do
+    resource :like, only: [:create, :destroy]
     resources :images, only: [:show]
   end
 end

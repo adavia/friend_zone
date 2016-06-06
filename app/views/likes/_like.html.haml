@@ -1,0 +1,9 @@
+- if current_user.like?(likable)
+  = link_to fa_icon("heart", text: "You liked this #{likable.likes.count}"),
+    [likable, :like], remote: true, method: :delete, title: "Unlike",
+    class: "btn btn-sm btn-default"
+- else
+  = link_to fa_icon("heart-o", text: likable.likes.count),
+    [likable, :like], remote: true, method: :post, title: "Like",
+    class: "btn btn-sm btn-default"
+

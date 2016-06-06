@@ -1,40 +1,52 @@
-.post
+= div_for post do
   .post-heading
-    .pull-left.image
-      %img.img-circle.avatar{alt: "User profile", src: "/assets/no_user.png"}
-    .pull-left.meta
-      .title.h5
-        = link_to content_tag(:b, post.user), edit_user_registration_path
-        made a post.
-      %h6.text-muted.time
-        = time_ago_in_words(post.created_at)
+    %ul.media-list
+      %li.media
+        .media-left
+          %a{href: "#"}
+            %img.media-object{alt: "User profile", src: "/assets/no_user.png"}
+        .media-body
+          .btn-group.pull-right
+            %button.btn.btn-default.btn-xs.dropdown-toggle{"aria-expanded": "false",
+            "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                = link_to "Edit", [:edit, post], remote: true
+              %li
+                = link_to "Remove post", post, method: :delete, remote: true
+          %h5.media-heading
+            = link_to post.user, edit_user_registration_path
+            made a post:
+          %h6.text-muted.time
+            = time_ago_in_words(post.created_at)
   .post-description
     %p
       = post.body
-      - if post.images.any?
-        .post-images
-          .row
-            = render post.images
+    - if post.images.any?
+      .post-images
+        .row
+          = render post.images
     .stats
-      %a.btn.btn-sm.btn-default.stat-item{href: "#"}
-        %i.fa.fa-thumbs-up.icon>
-        2
-      %a.btn.btn-sm.btn-default.stat-item{href: "#"}
-        %i.fa.fa-share.icon>
-        12
+      = div_for(post, :like, class: "stat-likes") do
+        = render "likes/like", likable: post
   .post-footer
     .input-group
       %input.form-control{placeholder: "Add a comment", type: "text"}
       %span.input-group-addon
         %a{href: "#"}
           %i.fa.fa-edit
-    %ul.comments-list
-      %li.comment
-        %a.pull-left{href: "#"}
-          %img.avatar{alt: "avatar",
-          src: "http://bootdey.com/img/Content/user_1.jpg"}
-        .comment-body
-          .comment-heading
-            %h4.user Gavino Free
-            %h6.text-muted.time 5 minutes ago
-          %p Sure, oooooooooooooooohhhhhhhhhhhhhhhh
+    .comment-list
+      %ul.media-list
+        %li.media
+          .media-left
+            %a{href: "#"}
+              %img.media-object{alt: "User profile",
+              src: "http://bootdey.com/img/Content/user_1.jpg"}
+          .media-body
+            %h5.media-heading
+              = link_to post.user, edit_user_registration_path
+              %small
+                = time_ago_in_words(post.created_at)
+            %p
+              = post.body

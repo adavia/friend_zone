@@ -1,8 +1,15 @@
 .row
   .col-sm-6
     .wrapper
-      #form-post
-        = render "form", post: @post
+      #form-post-content
+        .media
+          .media-left
+            = image_tag "/assets/no_user.png",
+              class: "media-object img-thumbnail", width: "50"
+          .media-body
+            .media-heading
+              #form-post
+                = render "form", post: @post
     .wrapper
       #post-list
         = render(@posts) || content_tag(:div, class:"default-message") do

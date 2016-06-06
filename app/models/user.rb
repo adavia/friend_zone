@@ -8,7 +8,13 @@ class User < ApplicationRecord
 
   has_many :images, as: :imageable, dependent: :destroy
 
+  has_many :likes, dependent: :destroy
+
   def to_s
     email
+  end
+
+  def like?(model)
+    self.likes.find_by_likable_id_and_likable_type(model, model.class.name)
   end
 end

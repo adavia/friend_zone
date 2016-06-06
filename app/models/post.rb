@@ -3,6 +3,8 @@ class Post < ApplicationRecord
 
   has_many :images, as: :imageable, dependent: :destroy
 
+  has_many :likes, as: :likable, dependent: :destroy
+
   validates :body, presence: true
   validates :user, presence: true
 

@@ -1,10 +1,10 @@
-= simple_form_for(post, html: { multipart: true, autocomplete: :off },
+= simple_form_for(post, html: { multipart: true },
   data: { behavior: "submit-post" }) do |f|
-  = f.input :body, label: false, placeholder: "What are you thinking?"
+  = f.input :body, label: false, placeholder: "What are you thinking?", as: :text
   .clearfix
-  - if !post.persisted?
-    %span.btn-file
-      = fa_icon "camera", text: "Upload"
-      = file_field_tag "images[]", multiple: true,
-      data: { behavior: "upload-post-image" }
+    - if !post.persisted?
+      %span.btn-file
+        = fa_icon "camera", text: "Upload"
+        = file_field_tag "images[]", multiple: true,
+        data: { behavior: "upload-post-image" }
     = f.button :submit, "Publish post", class: "btn btn-sm pull-right"

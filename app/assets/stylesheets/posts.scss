@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#form-post {
+#form-post-content {
   padding: 20px;
 }
 
@@ -11,41 +11,40 @@
 }
 
 .post-heading {
-  height: 80px;
+  height: 75px;
   padding: 20px 15px;
-  .avatar {
+  h6.time {
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
+  .media {
+    overflow: visible;
+    .media-body{
+      overflow: visible;
+    }
+  }
+  .media-heading {
+    margin-top: 5px;
+  }
+  .media-object {
+    @extend .img-responsive;
+    @extend .img-thumbnail;
     width: 60px;
     height: 60px;
     display: block;
-    margin-right: 15px;
-  }
-}
-
-.meta {
-  .title {
-    margin-bottom: 0;
-  }
-  .time {
-    margin-top: 8px;
-    color: #999;
+    margin-right: 5px;
   }
 }
 
 .post-description {
   padding: 15px;
-  p {
-    font-size: 14px;
-  }
   .stats {
-    margin-top: 20px;
-    .stat-item {
-      display: inline-block;
-      margin-right: 15px;
-      .icon {
-        margin-right: 8px;
-      }
-    }
+    margin-top: 15px;
   }
+}
+
+.post-images {
+  margin-top: 15px;
 }
 
 .post-footer {
@@ -55,41 +54,30 @@
   .input-group-addon a {
     color: #454545;
   }
-}
-
-.comments-list {
-  padding: 0;
-  margin-top: 20px;
-  list-style-type: none;
-  .comment {
-    display: block;
-    width: 100%;
-    margin: 20px 0;
-    .avatar {
-      width: 35px;
-      height: 35px;
+  p {
+    font-size: 13px;
+  }
+  .media-heading {
+    small {
+      margin-left: 15px;
+      font-size: 12px;
     }
   }
-  .comment-body, > .comments-list {
-    margin-left: 50px;
+  .media-object {
+    @extend .img-responsive;
+    @extend .img-thumbnail;
+    width: 35px;
+    height: 35px;
+    display: block;
+    margin-right: 5px;
   }
 }
 
-.comment-heading {
-  display: block;
-  width: 100%;
-  .user {
-    font-size: 14px;
-    font-weight: bold;
-    display: inline;
-    margin-top: 0;
-    margin-right: 10px;
-  }
-  .time {
-    font-size: 12px;
-    color: #aaa;
-    margin-top: 0;
-    display: inline;
+.comment-list {
+  padding: 0;
+  margin-top: 20px;
+  .media-list {
+    margin: 0px;
   }
 }
 
