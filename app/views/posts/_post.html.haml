@@ -6,7 +6,7 @@
           %a{href: "#"}
             %img.media-object{alt: "User profile", src: "/assets/no_user.png"}
         .media-body
-          - if post.user.id == current_user.id
+          - if post.user == current_user
             .btn-group.pull-right
               %button.btn.btn-default.btn-xs.dropdown-toggle{"aria-expanded": "false",
               "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}

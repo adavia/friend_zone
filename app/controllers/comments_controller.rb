@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_commentable
+  before_action :set_commentable, only: [:new, :create, :edit, :update]
+  before_action :set_comment, only: [:edit, :update, :destroy]
 
   def new
     @comment = @commentable.comments.build
@@ -25,8 +26,26 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.js   {}
+        format.json {
+          render json: @post, status: :created, location: @post
+        }
+      else
+        format.js   {}
+        format.json {
+          render json: @post.errors, status: :unprocessable_entity
+        }
+      end
+    end
+  end
+
   def destroy
-    @comment = @commentable.comments.find_by_user_id(current_user)
     @comment.destroy
 
     respond_to do |format|
@@ -39,6 +58,10 @@ class CommentsController < ApplicationController
   def set_commentable
     klass = [Post, Image].detect { |c| params["#{c.name.underscore}_id"] }
     @commentable = klass.find(params["#{klass.name.underscore}_id"])
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:id])
   end
 
   def comment_params

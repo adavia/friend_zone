@@ -38,7 +38,13 @@
   .media-body {
     h5 {
       font-size: 13px;
-      margin-bottom: 2px;
+      color: #777;
+    }
+    .comment-actions {
+      @extend .pull-right;
+      font-size: 11px;
+      color: #777;
+      margin-left: 5px;
     }
   }
   .media-object {
@@ -48,5 +54,10 @@
     height: 35px;
     display: block;
     margin-right: 5px;
+  }
+  form {
+    .form-group {
+      margin-bottom: 0px;
+    }
   }
 }

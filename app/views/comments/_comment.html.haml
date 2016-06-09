@@ -1,13 +1,19 @@
-%ul.media-list
+= content_tag_for(:ul, comment, class: "media-list") do
   %li.media
     .media-left
       %a{href: "#"}
         %img.media-object{alt: "User profile",
         src: "http://bootdey.com/img/Content/user_1.jpg"}
     .media-body
+      - if comment.user == current_user
+        = link_to fa_icon("close"), [comment.commentable, comment],
+        method: :delete, remote: true, title: "Remove comment", class: "comment-actions"
+        = link_to fa_icon("pencil"), [:edit, comment.commentable, comment],
+        remote: true, title: "Edit comment", class: "comment-actions"
       %h5.media-heading
         = link_to comment.user, edit_user_registration_path
         %small
           = time_ago_in_words(comment.created_at)
-      %p
-        = comment.body
+      .media-content
+        %p
+          = comment.body
