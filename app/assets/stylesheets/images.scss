@@ -1,0 +1,10 @@
+.post-images {
+  margin-top: 15px;
+}
+
+.post-images .row {
+  margin:0;
+  > div {
+    padding:0;
+  }
+}

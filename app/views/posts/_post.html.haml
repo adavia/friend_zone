@@ -1,4 +1,4 @@
-= div_for post do
+= div_for(post) do
   .post-heading
     %ul.media-list
       %li.media
@@ -6,15 +6,16 @@
           %a{href: "#"}
             %img.media-object{alt: "User profile", src: "/assets/no_user.png"}
         .media-body
-          .btn-group.pull-right
-            %button.btn.btn-default.btn-xs.dropdown-toggle{"aria-expanded": "false",
-            "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
-              %span.caret
-            %ul.dropdown-menu
-              %li
-                = link_to "Edit", [:edit, post], remote: true
-              %li
-                = link_to "Remove post", post, method: :delete, remote: true
+          - if post.user.id == current_user.id
+            .btn-group.pull-right
+              %button.btn.btn-default.btn-xs.dropdown-toggle{"aria-expanded": "false",
+              "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to "Edit", [:edit, post], remote: true
+                %li
+                  = link_to "Remove post", post, method: :delete, remote: true
           %h5.media-heading
             = link_to post.user, edit_user_registration_path
             made a post:
@@ -28,25 +29,15 @@
         .row
           = render post.images
     .stats
-      = div_for(post, :like, class: "stat-likes") do
+      .stat-item.stat-likes
         = render "likes/like", likable: post
+      .stat-item.stat-comments
+        = link_to fa_icon("comment", text: "Comment"), [:new, post, :comment],
+          remote: true, title: "Comment this post!",
+          class: "btn btn-sm btn-default"
+  .post-comment-list
+    -if post.comments.any?
+      = render post.comments
+    - else
+      %span.default-message NO COMMENTS TO SHOW!
   .post-footer
-    .input-group
-      %input.form-control{placeholder: "Add a comment", type: "text"}
-      %span.input-group-addon
-        %a{href: "#"}
-          %i.fa.fa-edit
-    .comment-list
-      %ul.media-list
-        %li.media
-          .media-left
-            %a{href: "#"}
-              %img.media-object{alt: "User profile",
-              src: "http://bootdey.com/img/Content/user_1.jpg"}
-          .media-body
-            %h5.media-heading
-              = link_to post.user, edit_user_registration_path
-              %small
-                = time_ago_in_words(post.created_at)
-            %p
-              = post.body

@@ -3,7 +3,7 @@ class CreateImages < ActiveRecord::Migration[5.0]
     create_table :images do |t|
       t.string :file
       t.boolean :default, default: false
-      t.references :imageable, polymorphic: true
+      t.references :post, foreign_key: true
 
       t.timestamps
     end

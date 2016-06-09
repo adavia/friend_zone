@@ -6,8 +6,6 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
-  has_many :images, as: :imageable, dependent: :destroy
-
   has_many :likes, dependent: :destroy
 
   def to_s

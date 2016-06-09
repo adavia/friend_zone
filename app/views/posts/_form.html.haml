@@ -1,10 +1,13 @@
-= simple_form_for(post, html: { multipart: true },
-  data: { behavior: "submit-post" }) do |f|
+= simple_form_for(post, data: { behavior: "submit-post" }) do |f|
   = f.input :body, label: false, placeholder: "What are you thinking?", as: :text
   .clearfix
     - if !post.persisted?
       %span.btn-file
-        = fa_icon "camera", text: "Upload"
-        = file_field_tag "images[]", multiple: true,
-        data: { behavior: "upload-post-image" }
+        = fa_icon "camera", text: "Upload (max. 3 files)"
+        = f.simple_fields_for :images, Image.new do |ff|
+          = render "images/form", f: ff
     = f.button :submit, "Publish post", class: "btn btn-sm pull-right"
+  - if post.errors.messages[:images].any?
+    .wrapper-img
+      %p.text-danger
+        = post.errors.messages[:images][0]

@@ -3,7 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #form-post-content {
-  padding: 20px;
+  padding: 20px 15px;
+  .media-object {
+    @extend .img-responsive;
+    @extend .img-thumbnail;
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin-right: 5px;
+  }
 }
 
 .post:not(:first-child) {
@@ -11,7 +19,7 @@
 }
 
 .post-heading {
-  height: 75px;
+  height: 65px;
   padding: 20px 15px;
   h6.time {
     margin-top: 5px;
@@ -29,8 +37,8 @@
   .media-object {
     @extend .img-responsive;
     @extend .img-thumbnail;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     display: block;
     margin-right: 5px;
   }
@@ -41,49 +49,9 @@
   .stats {
     margin-top: 15px;
   }
-}
-
-.post-images {
-  margin-top: 15px;
-}
-
-.post-footer {
-  border-top: 1px solid #e1e8ed;
-  padding: 15px;
-  background-color: #f6f7f9;
-  .input-group-addon a {
-    color: #454545;
-  }
-  p {
-    font-size: 13px;
-  }
-  .media-heading {
-    small {
-      margin-left: 15px;
-      font-size: 12px;
-    }
-  }
-  .media-object {
-    @extend .img-responsive;
-    @extend .img-thumbnail;
-    width: 35px;
-    height: 35px;
-    display: block;
-    margin-right: 5px;
-  }
-}
-
-.comment-list {
-  padding: 0;
-  margin-top: 20px;
-  .media-list {
-    margin: 0px;
-  }
-}
-
-.post-images {
-  .thumbnail {
-    margin-bottom: 0px;
+  .stat-item {
+    display: inline-block;
+    margin-right: 10px;
   }
 }
 

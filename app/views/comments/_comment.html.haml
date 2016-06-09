@@ -1,0 +1,13 @@
+%ul.media-list
+  %li.media
+    .media-left
+      %a{href: "#"}
+        %img.media-object{alt: "User profile",
+        src: "http://bootdey.com/img/Content/user_1.jpg"}
+    .media-body
+      %h5.media-heading
+        = link_to comment.user, edit_user_registration_path
+        %small
+          = time_ago_in_words(comment.created_at)
+      %p
+        = comment.body

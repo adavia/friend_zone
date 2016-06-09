@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :post_owner!, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.includes(:user, :images, :likes, :comments).all
     @post = current_user.posts.build
   end
 
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 
   def update
     whitelisted_params = post_params
-    whitelisted_params.delete(:images)
+    whitelisted_params.delete(:images_attributes)
 
     respond_to do |format|
       if @post.update(whitelisted_params)
@@ -67,19 +67,19 @@ class PostsController < ApplicationController
     authenticate_user!
 
     if @post.user != current_user
-      render js: "alert('Hello Rails');"
+      render js: "alert('You are not allowed to do this!');"
     end
   end
 
   def upload_files
-    if params[:images] && params[:images] != [""]
-      params[:images].each do |image|
-        @post.images.create(file: image)
+    if params[:images_attributes]
+      params[:images_attributes].each do |image|
+        @post.images.create(file: image[:file])
       end
     end
   end
 
   def post_params
-    params.require(:post).permit(:body, :images)
+    params.require(:post).permit(:body, images_attributes: [:file])
   end
 end
