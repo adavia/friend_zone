@@ -1,0 +1,10 @@
+var post = $("##{@commentable.class.name.downcase}_#{@commentable.id}");
+
+- if params[:page].present?
+  post.find("#comment-list").append('#{ j render @comments }');
+  - if @comments.total_pages == @comments.current_page
+    post.find("#show_more").hide();
+  - else
+    post.find("#show_more").attr("href", "#{ post_comments_path(@commentable, page: comments.current_page + 1)}");
+- else
+  post.find(".post-comments").html('#{ j render "index", comments: @comments, commentable: @commentable }');

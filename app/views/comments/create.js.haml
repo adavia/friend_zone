@@ -5,5 +5,5 @@ var post = $("##{@commentable.class.name.downcase}_#{@commentable.id}");
   post.find(".form-group").removeClass("has-error");
   post.find("span.help-block").remove();
   post.find(".default-message").remove();
-  post.find(".post-comment-list").append($("#{ j render @comment }").fadeIn(1000));
+  post.find("#comment-list").prepend($("#{ j render @comment }").fadeIn(1000));
   post.find("#new_comment")[0].reset();

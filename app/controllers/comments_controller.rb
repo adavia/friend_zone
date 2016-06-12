@@ -1,7 +1,21 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_commentable, only: [:new, :create, :edit, :update]
+  before_action :set_commentable, only: [:index, :new, :create, :edit, :update]
   before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :comment_owner!, only: [:edit, :update, :destroy]
+
+  def index
+    @comments = @commentable.comments
+      .paginate(page: params[:page])
+      .order(created_at: :desc)
+
+    respond_to do |format|
+      format.js   {}
+      format.json {
+        render json: @comments
+      }
+    end
+  end
 
   def new
     @comment = @commentable.comments.build
@@ -62,6 +76,14 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def comment_owner!
+    authenticate_user!
+
+    if @comment.user != current_user
+      render js: "alert('You are not allowed to do this!');"
+    end
   end
 
   def comment_params

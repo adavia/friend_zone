@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :post_owner!, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.includes(:user, :images, :likes, :comments).all
+    @posts = Post.includes(:user, :images, :likes).all
     @post = current_user.posts.build
   end
 

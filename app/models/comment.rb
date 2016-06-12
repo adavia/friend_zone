@@ -6,5 +6,5 @@ class Comment < ApplicationRecord
   validates :body, length: { maximum: 300 }
   validates :commentable, presence: true
 
-  default_scope -> { order(created_at: :asc) }
+  self.per_page = 5
 end

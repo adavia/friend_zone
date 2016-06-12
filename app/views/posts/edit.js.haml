@@ -1,1 +1,1 @@
-$("#post_#{ @post.id }").find(".post-description p").replaceWith("#{ j render 'form', post: @post }");
+$("#post_#{ @post.id }").find(".post-body").html("#{ j render 'form', post: @post }");

@@ -20,6 +20,8 @@ gem 'simple_form'
 gem 'devise'
 # Add File Uploading
 gem 'carrierwave', '~> 0.10.0'
+# Use pagination
+gem 'will_paginate'
 # Add record tag helpers
 gem 'record_tag_helper', '~> 1.0'
 # Image manipulation

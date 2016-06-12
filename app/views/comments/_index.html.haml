@@ -1,0 +1,14 @@
+#comment-list
+  - if comments.any?
+    = render comments
+  - else
+    %span.default-message NO COMMENTS TO SHOW!
+.comment-extra
+  = link_to fa_icon("plus", text: "Add New"), [:new, commentable, :comment],
+  remote: true, title: "Say something to this post", class: "btn btn-xs btn-default"
+  - unless comments.next_page.nil?
+    = link_to fa_icon("undo", text: "Load More"),
+    post_comments_path(commentable, page: comments.next_page),
+    remote: true, title: "Load more comments!",
+    data: { "disable-with": "loading.." },
+    class: "btn btn-xs btn-default", id: "show_more"

@@ -22,8 +22,9 @@
           %h6.text-muted.time
             = time_ago_in_words(post.created_at)
   .post-description
-    %p
-      = post.body
+    .post-body
+      %p
+        = post.body
     - if post.images.any?
       .post-images
         .row
@@ -32,12 +33,10 @@
       .stat-item.stat-likes
         = render "likes/like", likable: post
       .stat-item.stat-comments
-        = link_to fa_icon("comment", text: "Comment"), [:new, post, :comment],
-          remote: true, title: "Comment this post!",
+        = link_to fa_icon("comment", text: "Comments #{post.comments.count}"),
+          [post, :comments],
+          remote: true, title: "Show what people say about this!",
+          data: { "disable-with": "loading.." },
           class: "btn btn-sm btn-default"
-  .post-comment-list
-    -if post.comments.any?
-      = render post.comments
-    - else
-      %span.default-message NO COMMENTS TO SHOW!
+  .post-comments
   .post-footer

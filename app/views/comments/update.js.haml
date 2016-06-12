@@ -1,4 +1,4 @@
 - if @comment.errors.any?
   $("#comment_#{ @comment.id }").find(".media-content").html("#{ j render 'form', commentable: @commentable }");
 - else
-  $("#comment_#{ @comment.id }").find("form").replaceWith("<p>#{ @comment.body }</p>");
+  $("#comment_#{ @comment.id }").find(".media-content").html("<p>#{ @comment.body }</p>");

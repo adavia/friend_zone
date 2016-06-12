@@ -1,4 +1,4 @@
 - if @post.errors.any?
-  $("#form-post").html("#{ j render 'form', post: @post }");
+  $("#post_#{ @post.id }").find(".post-body").html("#{ j render 'form', post: @post }");
 - else
-  $("#post_#{ @post.id }").find("form").replaceWith("<p>#{ @post.body }</p>");
+  $("#post_#{ @post.id }").find(".post-body").html("<p>#{ @post.body }</p>");
