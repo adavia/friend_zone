@@ -22,12 +22,12 @@ gem 'devise'
 gem 'carrierwave', '~> 0.10.0'
 # Use pagination
 gem 'will_paginate'
+# Add geolocation
+gem 'geocoder'
 # Add record tag helpers
 gem 'record_tag_helper', '~> 1.0'
 # Image manipulation
 gem 'mini_magick'
-# Handle ajax File Uploads
-gem 'jquery-form-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -37,6 +37,10 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+# Handle ajax File Uploads
+gem 'jquery-form-rails'
+# Use jquery geocomplete
+gem 'geocomplete_rails'
 # Turbolinks makes navigating your web application faster.
 # Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5.x'

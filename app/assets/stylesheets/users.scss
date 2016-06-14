@@ -8,16 +8,16 @@
 }
 
 .panel-profile {
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.075);
   border-radius: 0;
-  border: 0;
+  border: 1px solid #e1e8ed;
   margin-bottom: 24px;
 
   .widget-header {
     padding: 15px 15px 50px 15px;
-    min-height: 125px;
+    min-height: 100px;
     position: relative;
     overflow: hidden;
+    background-color: #E5F2F7;
   }
 
   .widget-body {
@@ -28,19 +28,11 @@
 
   .widget-img {
     position: absolute;
-    width: 64px;
-    height: 64px;
-    left: 50%;
+    width: 80px;
+    height: 80px;
+    left: 47%;
     margin-left: -32px;
-    top: -32px;
-  }
-
-  .widget-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    min-height: 100%;
+    top: -45px;
   }
 
   .img-border-light {
@@ -61,19 +53,15 @@
     }
   }
 
-  .mar-btm {
-    margin-bottom: 15px;
-  }
-
   .pad-top {
     padding-top: 8px;
   }
 
   .small, small {
-    font-size: 65%;
+    font-size: 68%;
   }
 
   .text-lg {
-    font-size: 75%;
+    font-size: 78%;
   }
 }

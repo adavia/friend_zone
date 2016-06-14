@@ -6,12 +6,19 @@
         = simple_form_for(resource, as: resource_name,
           url: registration_path(resource_name)) do |f|
           = f.error_notification
-          .form-inputs
-            = f.input :email, required: true, autofocus: true
-            = f.input :password, required: true,
+          = f.input :email, label: false, placeholder: "Email"
+          = f.input :username, label: false, placeholder: "Username"
+          = f.input :birthday, label: false,
+            start_year: Date.today.year,
+            end_year: Date.today.year - 70
+          = f.input :gender, collection: {Male: "male", Female: "female"},
+            label: false, prompt: "-- Gender --"
+          = f.input :address, label: false, placeholder: "Location"
+          = f.input :password, label: false, placeholder: "Password",
             hint: ("#{@minimum_password_length} characters minimum")
-            = f.input :password_confirmation, required: true
-          .form-actions
-            = f.button :submit, "Sign up", data:{"disable-with": "Signing up.."}
+          = f.input :password_confirmation, label: false,
+            placeholder: "Repeat Password"
+
+          = f.button :submit, "Sign up", data:{"disable-with": "Signing up.."}
         %ul.auth-links
           = render "devise/shared/links"
