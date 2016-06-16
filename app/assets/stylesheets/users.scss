@@ -21,16 +21,17 @@
   }
 
   .widget-body {
-    padding: 50px 15px 15px;
+    padding: 45px 10px 1px;
     position: relative;
     background-color: #fff;
   }
 
   .widget-img {
+    @extend .img-responsive;
     position: absolute;
-    width: 80px;
-    height: 80px;
-    left: 47%;
+    width: 75px;
+    height: 75px;
+    left: 48%;
     margin-left: -32px;
     top: -45px;
   }
@@ -64,4 +65,31 @@
   .text-lg {
     font-size: 78%;
   }
+}
+
+.ui-autocomplete {
+  position: absolute;
+  z-index: 1000;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 2px;
+  list-style: none;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  > li {
+    padding: 3px 20px;
+    &.ui-state-focus {
+      background-color: #DDD;
+    }
+  }
+}
+
+.ui-helper-hidden-accessible {
+  display: none;
 }

@@ -1,10 +1,12 @@
 .panel-profile.widget
   .widget-header.bg-purple
   .widget-body.text-center
-    %img.widget-img.img-border-light{alt: "Profile Picture", src: "http://bootdey.com/img/Content/avatar/avatar3.png"}
-    %h4.mar-no Lucy Mooner
-    %p.text-muted.mar-btm Art Designer
-    %ul.list-unstyled.text-center.pad-top.mar-no.clearfix
+    = image_tag "/assets/no_user.png", class: "widget-img img-border-light"
+    %h4.mar-no
+      = user.username.capitalize
+    %p.text-muted.mar-btm
+      = fa_icon("#{user.gender}", text: "#{user.gender[0].capitalize} - #{user.age}")
+    %ul.list-unstyled.text-center.clearfix
       %li.col-xs-4
         %span.text-lg 1,345
         %p.text-muted.text-uppercase

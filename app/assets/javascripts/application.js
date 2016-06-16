@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require jquery.form
-//= require geocomplete
+//= require jquery-ui/autocomplete
 //= require init
 //= require posts
 //= require images
