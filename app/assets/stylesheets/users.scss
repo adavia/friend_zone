@@ -36,12 +36,18 @@
     top: -45px;
   }
 
+  .widget-actions {
+    @extend .list-unstyled;
+    @extend .text-center;
+    @extend .clearfix;
+  }
+
   .img-border-light {
     box-shadow: 0 0 0 4px #fff;
   }
 
   .mar-no {
-    margin: 0 !important;
+    margin: 0px 0px 15px 0px !important;
   }
 
   .text-muted {
@@ -52,10 +58,6 @@
     &:hover, &:focus {
       color: #606060;
     }
-  }
-
-  .pad-top {
-    padding-top: 8px;
   }
 
   .small, small {
@@ -92,4 +94,9 @@
 
 .ui-helper-hidden-accessible {
   display: none;
+}
+
+.profile-menu {
+  padding: 15px;
+  border-bottom: 1px solid #e1e8ed;
 }

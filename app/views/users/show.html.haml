@@ -1,0 +1,16 @@
+.row
+  .col-md-3
+    = render "users/side_profile", user: @user
+  .col-sm-6
+    .wrapper
+      .profile-menu
+        %ul.nav.nav-pills
+          %li.active{role: "presentation"}
+            = link_to "Feed", @user
+          %li{role: "presentation"}
+            = link_to "Profile Information", [@user, tab: :profile]
+          %li{role: "presentation"}
+            = link_to "Images", [@user, tab: :images]
+      #post-list
+        = render @user.posts
+

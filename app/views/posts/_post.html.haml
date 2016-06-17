@@ -17,7 +17,7 @@
                 %li
                   = link_to "Remove post", post, method: :delete, remote: true
           %h5.media-heading
-            = link_to post.user, edit_user_registration_path
+            = link_to post.user, post.user
             made a post:
           %h6.text-muted.time
             = time_ago_in_words(post.created_at)

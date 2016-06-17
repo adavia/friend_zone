@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_many :likes, dependent: :destroy
 
+  has_many :images
+
   validates :username, presence: true, uniqueness: true
   validates :gender, presence: true
   validates :gender, inclusion: { in: %w(male female),
@@ -26,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def to_s
-    email
+    username
   end
 
   def like?(model)
