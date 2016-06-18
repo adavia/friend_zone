@@ -97,6 +97,26 @@
 }
 
 .profile-menu {
+  padding: 15px 15px 0px 15px;
+}
+
+.img-profile {
   padding: 15px;
-  border-bottom: 1px solid #e1e8ed;
+  img {
+    @extend .center-block;
+    width: 130px;
+    height: 130px;
+  }
+}
+
+.content-profile {
+  h4 {
+    @extend .text-center;
+    margin: 0;
+  }
+  span {
+    @extend .text-center;
+    @extend .center-block;
+    margin-bottom: 15px;
+  }
 }

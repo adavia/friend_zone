@@ -2,13 +2,13 @@ module ApplicationHelper
   def title(*parts)
     unless parts.empty?
       content_for :title do
-        (parts << "Social Friends").join(" - ")
+        (parts << "Friend Zone").join(" - ")
       end
     end
   end
 
   def active_link(path)
-    if current_page? path
+    if request.fullpath == path
       "active"
     end
   end

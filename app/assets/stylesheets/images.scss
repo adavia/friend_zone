@@ -1,10 +1,20 @@
 .post-images {
   margin-top: 15px;
+  .row {
+    margin:0;
+    > div {
+      padding:0;
+    }
+  }
 }
 
-.post-images .row {
-  margin:0;
-  > div {
-    padding:0;
+
+.profile-images {
+  padding: 10px;
+  .row {
+    margin:0;
+    > div {
+      padding: 5px;
+    }
   }
 }

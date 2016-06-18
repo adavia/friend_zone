@@ -1,16 +1,29 @@
 .row
   .col-md-3
-    = render "users/side_profile", user: @user
+    .wrapper
+      .img-profile
+        = image_tag "/assets/no_user.png", class: "img-responsive img-thumbnail"
+      .content-profile
+        %h4
+          = @user.username
+        %span.text-muted
+          = @user.address
   .col-sm-6
     .wrapper
       .profile-menu
-        %ul.nav.nav-pills
-          %li.active{role: "presentation"}
+        %ul.nav.nav-tabs
+          %li{role: "presentation", class: active_link(user_path(@user))}
             = link_to "Feed", @user
-          %li{role: "presentation"}
+          %li{role: "presentation", class: active_link(user_path(@user, tab: :profile))}
             = link_to "Profile Information", [@user, tab: :profile]
-          %li{role: "presentation"}
+          %li{role: "presentation", class: active_link(user_path(@user, tab: :images))}
             = link_to "Images", [@user, tab: :images]
-      #post-list
-        = render @user.posts
+
+      - if params[:tab] == "images"
+        .profile-images
+          .row
+            = render @user.images
+      - else
+        .profile-feed
+          = render @user.posts
 
