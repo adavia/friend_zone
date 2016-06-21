@@ -1,0 +1,6 @@
+- if resource.errors.any?
+  $("#profile-settings").html("#{ j render 'form' }");
+- else
+  $("#edit_user").find(".form-group").removeClass("has-error");
+  $("#edit_user").find("span.help-block").remove();
+  alert("Your password has been updated");

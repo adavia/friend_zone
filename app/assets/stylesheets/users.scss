@@ -7,65 +7,41 @@
   margin-top: 10px;
 }
 
-.panel-profile {
-  border-radius: 0;
-  border: 1px solid #e1e8ed;
-  margin-bottom: 24px;
+.side-profile-header {
+  padding: 15px 15px 50px 15px;
+  min-height: 80px;
+  position: relative;
+  overflow: hidden;
+  background-color: #E5F2F7;
+}
 
-  .widget-header {
-    padding: 15px 15px 50px 15px;
-    min-height: 100px;
-    position: relative;
-    overflow: hidden;
-    background-color: #E5F2F7;
-  }
-
-  .widget-body {
-    padding: 45px 10px 1px;
-    position: relative;
-    background-color: #fff;
-  }
-
-  .widget-img {
+.side-profile-body {
+  padding: 45px 10px 1px;
+  position: relative;
+  background-color: #fff;
+  .side-profile-img {
+    @extend .img-thumbnail;
     @extend .img-responsive;
     position: absolute;
-    width: 75px;
-    height: 75px;
-    left: 48%;
-    margin-left: -32px;
+    width: 80px;
+    height: 80px;
+    left: 50%;
+    margin-left: -40px;
     top: -45px;
   }
-
-  .widget-actions {
+  h4 {
+    margin: 0px 0px 15px 0px;
+  }
+  ul {
     @extend .list-unstyled;
     @extend .text-center;
     @extend .clearfix;
-  }
-
-  .img-border-light {
-    box-shadow: 0 0 0 4px #fff;
-  }
-
-  .mar-no {
-    margin: 0px 0px 15px 0px !important;
-  }
-
-  .text-muted {
-    color: #606060;
-  }
-
-  a.text-muted {
-    &:hover, &:focus {
-      color: #606060;
+    span {
+      font-size: 78%;
     }
-  }
-
-  .small, small {
-    font-size: 68%;
-  }
-
-  .text-lg {
-    font-size: 78%;
+    small {
+      font-size: 68%;
+    }
   }
 }
 
@@ -100,7 +76,7 @@
   padding: 15px 15px 0px 15px;
 }
 
-.img-profile {
+.profile-img {
   padding: 15px;
   img {
     @extend .center-block;
@@ -109,7 +85,7 @@
   }
 }
 
-.content-profile {
+.profile-content {
   h4 {
     @extend .text-center;
     margin: 0;
@@ -118,5 +94,25 @@
     @extend .text-center;
     @extend .center-block;
     margin-bottom: 15px;
+  }
+}
+
+.profile-info {
+  padding: 15px;
+  h5 {
+    margin: 0px 0px 5px 0px;
+  }
+  p {
+    margin-bottom: 3px;
+  }
+  .profile-map {
+    margin: 10px 0px 10px 0px;
+  }
+}
+
+.profile-config {
+  margin-top: 10px;
+  form {
+    margin-top: 13px;
   }
 }

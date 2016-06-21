@@ -1,9 +1,9 @@
 .row
   .col-md-3
     .wrapper
-      .img-profile
+      .profile-img
         = image_tag "/assets/no_user.png", class: "img-responsive img-thumbnail"
-      .content-profile
+      .profile-content
         %h4
           = @user.username
         %span.text-muted
@@ -20,10 +20,65 @@
             = link_to "Images", [@user, tab: :images]
 
       - if params[:tab] == "images"
-        .profile-images
+        - if @user.images.any?
+          .profile-images
+            .row
+              = render @user.images
+        - else
+          .default-message
+            NO CURRENT IMAGES TO SHOW
+      - elsif params[:tab] == "profile"
+        .profile-info
+          %h5 Location
+          %p.text-muted
+            = @user.address
+          .profile-map
+            = image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@user.latitude},#{@user.longitude}&zoom=11&size=500x150",
+              class: "img-responsive img-thumbnail"
+          %h5 Personal information
           .row
-            = render @user.images
+            .col-md-2.col-xs-3
+              %p
+                Username
+              %p
+                Gender
+              %p
+                Age
+              %p
+                Location
+            .col-md-10.col-xs-9
+              %p.text-muted
+                = @user.username
+              %p.text-muted
+                = fa_icon("#{@user.gender}", text: @user.gender.capitalize)
+              %p.text-muted
+                = @user.age
+              %p.text-muted
+                = @user.address
+          .profile-config
+            %h5
+              Settings
+              - if @user == current_user
+                = link_to fa_icon('wrench'), edit_user_registration_path,
+                  remote: true, class: "pull-right"
+            #profile-settings
+              .row
+                .col-md-2.col-xs-3
+                  %p
+                    Email
+                  %p
+                    Sign in
+                .col-md-10.col-xs-9
+                  %p.text-muted
+                    ******@******.com
+                  %p.text-muted
+                    #{time_ago_in_words(@user.last_sign_in_at)} ago
+
       - else
         .profile-feed
-          = render @user.posts
+          - if @user.posts.any?
+            = render @user.posts
+          - else
+            .default-message
+              NO CURRENT ACTIVITY TO SHOW
 
