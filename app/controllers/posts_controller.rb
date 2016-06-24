@@ -4,7 +4,9 @@ class PostsController < ApplicationController
   before_action :post_owner!, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.includes(:user, :images, :likes).all
+    @posts = Post.
+      where(user: current_user.timeline_user_ids).
+      includes(:user, :images, :likes)
     @post = current_user.posts.build
   end
 

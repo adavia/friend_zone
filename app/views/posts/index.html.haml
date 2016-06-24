@@ -32,5 +32,8 @@
                 = render "form", post: @post
     .wrapper
       #post-list
-        = render @posts
+        - if @posts.any?
+          = render @posts
+        - else
+          .default-message NOTHING TO SHOW YET. SHARE WHAT YOU THINK!
 

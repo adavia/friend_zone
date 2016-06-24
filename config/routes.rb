@@ -4,7 +4,14 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: :registrations }
 
-  resources :users
+  resources :users, only: [:show] do
+    member do
+      post :follow
+    end
+    member do
+      post :unfollow
+    end
+  end
 
   resources :posts, only: [:index, :create, :edit, :update, :destroy] do
     resource :like, only: [:create, :destroy]

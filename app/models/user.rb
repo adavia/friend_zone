@@ -10,6 +10,16 @@ class User < ApplicationRecord
 
   has_many :images
 
+  has_many :subscriptions, foreign_key: :follower_id,
+    dependent: :destroy
+
+  has_many :leaders, through: :subscriptions
+
+  has_many :reverse_subscriptions, foreign_key: :leader_id,
+    class_name: 'Subscription', dependent: :destroy
+
+  has_many :followers, through: :reverse_subscriptions
+
   validates :username, presence: true, uniqueness: true
   validates :gender, presence: true
   validates :gender, inclusion: { in: %w(male female),
@@ -31,6 +41,10 @@ class User < ApplicationRecord
     username
   end
 
+  def timeline_user_ids
+    leader_ids + [id]
+  end
+
   def like?(model)
     self.likes.find_by_likable_id_and_likable_type(model, model.class.name)
   end
@@ -39,5 +53,21 @@ class User < ApplicationRecord
     now = Time.now.utc.to_date
     now.year - self.birthday.year - ((now.month > self.birthday.month ||
      (now.month == self.birthday.month && now.day >= self.birthday.day)) ? 0 : 1)
+  end
+
+  def following?(leader)
+    leaders.include? leader
+  end
+
+  def follow!(leader)
+    if leader != self && !following?(leader)
+      leaders << leader
+    end
+  end
+
+  def unfollow!(leader)
+    if leader != self && following?(leader)
+      leaders.delete(leader)
+    end
   end
 end

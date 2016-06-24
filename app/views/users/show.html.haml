@@ -8,6 +8,12 @@
           = @user.username
         %span.text-muted
           = @user.address
+        - if current_user != @user
+          .btn-toolbar{role: "toolbar", "aria-label": "User actions toolbar"}
+            #profile-actions.btn-group{role: "toolbar", "aria-label": "Profile actions"}
+              = render "actions", user: @user
+            #profile-message.btn-group{role: "toolbar", "aria-label": "Profile message"}
+              %button.btn.btn-sm.btn-default Send a message
   .col-sm-6
     .wrapper
       .profile-menu
