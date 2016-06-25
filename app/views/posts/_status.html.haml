@@ -1,0 +1,15 @@
+%li.col-xs-4
+  %span
+    = user.leaders.count
+  %p.text-muted.text-uppercase
+    %small Following
+%li.col-xs-4
+  %span
+    = user.followers.count
+  %p.text-muted.text-uppercase
+    %small Followers
+%li.col-xs-4
+  %span
+    = user.posts.count
+  %p.text-muted.text-uppercase
+    %small Posts

@@ -6,19 +6,8 @@
         = image_tag "/assets/no_user.png", class: "side-profile-img"
         %h4.text-center
           = link_to current_user.username, current_user
-        %ul
-          %li.col-xs-4
-            %span 1,345
-            %p.text-muted.text-uppercase
-              %small Following
-          %li.col-xs-4
-            %span 23,456
-            %p.text-muted.text-uppercase
-              %small Followers
-          %li.col-xs-4
-            %span 52,678
-            %p.text-muted.text-uppercase
-              %small Likes
+        %ul.side-profile-status
+          = render "status", user: current_user
 
   .col-sm-6
     .wrapper

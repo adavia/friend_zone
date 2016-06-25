@@ -1,1 +1,2 @@
 $("#post_#{ @post.id }").fadeOut(300, function() { $(this).remove(); });
+$(".side-profile-status").html("#{ j render 'status', user: current_user }");
