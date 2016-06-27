@@ -11,11 +11,11 @@ Rails.application.routes.draw do
     member do
       post :unfollow
     end
+    resources :images, only: [:show]
   end
 
   resources :posts, only: [:index, :create, :edit, :update, :destroy] do
     resource :like, only: [:create, :destroy]
-    resources :images, only: [:show]
     resources :comments, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 end
