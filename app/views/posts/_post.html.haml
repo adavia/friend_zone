@@ -33,7 +33,7 @@
       .stat-item.stat-likes
         = render "likes/like", likable: post
       .stat-item.stat-comments
-        = link_to fa_icon("comment", text: "Comments #{post.comments.count}"),
+        = link_to fa_icon("comment", text: "#{post.comments.count} Comments"),
           [post, :comments],
           remote: true, title: "Show what people say about this!",
           data: { "disable-with": "loading.." },
