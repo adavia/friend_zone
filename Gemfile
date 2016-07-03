@@ -41,6 +41,8 @@ gem 'jquery-rails'
 gem 'jquery-form-rails'
 # Use jquery ui
 gem 'jquery-ui-rails'
+# Add fancybox
+gem 'fancybox2-rails', '~> 0.2.8'
 # Turbolinks makes navigating your web application faster.
 # Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5.x'

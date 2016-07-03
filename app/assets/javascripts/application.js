@@ -16,6 +16,7 @@
 //= require bootstrap-sprockets
 //= require jquery.form
 //= require jquery-ui/autocomplete
+//= require fancybox
 //= require init
 //= require posts
 //= require images
