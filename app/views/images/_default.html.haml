@@ -1,0 +1,8 @@
+- if image.default
+  %button.btn.btn-sm.btn-success{disabled: "disabled"}
+    = fa_icon("toggle-on", text: "Default")
+- else
+  = link_to fa_icon("toggle-off", text: "Default"), [:default, image.user, image],
+    remote: true, method: :post, title: "Make this your primary photo",
+    data: { "disable-with": "loading.." },
+    class: "btn btn-sm btn-success"

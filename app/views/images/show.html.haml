@@ -2,12 +2,13 @@
   .row
     .col-md-6
       = image_tag(@image.file.url, class: "img-responsive")
+    .hidden-lg.hidden-md.hidden-sm &nbsp;
     .col-md-6
       %ul.media-list
         %li.media
           .media-left
             %a{href: "#"}
-              %img.media-object{alt: "User profile", src: "/assets/no_user.png"}
+              = image_tag user_avatar(@image.user), class: "media-object"
           .media-body
             %h5.media-heading
               = link_to @image.user, @image.user
@@ -22,6 +23,9 @@
             remote: true, title: "Show what people say about this!",
             data: { "disable-with": "loading.." },
             class: "btn btn-sm btn-default"
+        .stat-item.stat-default
+          = render "images/default", image: @image
+
       %br
       .image-comments
       .image-footer

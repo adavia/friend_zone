@@ -2,7 +2,7 @@
   .col-md-3
     .wrapper
       .profile-img
-        = image_tag "/assets/no_user.png", class: "img-responsive img-thumbnail"
+        = image_tag user_avatar(@user), class: "img-responsive img-thumbnail"
       .profile-content
         %h4
           = @user.username

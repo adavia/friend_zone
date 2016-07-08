@@ -2,8 +2,7 @@
   %li.media
     .media-left
       %a{href: "#"}
-        %img.media-object{alt: "User profile",
-        src: "http://bootdey.com/img/Content/user_1.jpg"}
+        = image_tag user_avatar(comment.user), class: "media-object"
     .media-body
       - if comment.user == current_user
         = link_to fa_icon("close"), [comment.commentable, comment],

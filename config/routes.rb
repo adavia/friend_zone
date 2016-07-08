@@ -11,7 +11,11 @@ Rails.application.routes.draw do
     member do
       post :unfollow
     end
-    resources :images, only: [:show]
+    resources :images, only: [:show] do
+      member do
+        post :default
+      end
+    end
   end
 
   resources :images, only: [] do

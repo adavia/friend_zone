@@ -4,7 +4,7 @@
       %li.media
         .media-left
           %a{href: "#"}
-            %img.media-object{alt: "User profile", src: "/assets/no_user.png"}
+            = image_tag user_avatar(post.user), class: "media-object"
         .media-body
           - if post.user == current_user
             .btn-group.pull-right

@@ -3,7 +3,7 @@
     .wrapper
       .side-profile-header
       .side-profile-body
-        = image_tag "/assets/no_user.png", class: "side-profile-img"
+        = image_tag user_avatar(current_user), class: "side-profile-img"
         %h4.text-center
           = link_to current_user.username, current_user
         %ul.side-profile-status
@@ -14,7 +14,7 @@
       #form-post-content
         .media
           .media-left
-            = image_tag "/assets/no_user.png", class: "media-object"
+            = image_tag user_avatar(current_user), class: "media-object"
           .media-body
             .media-heading
               #form-post
