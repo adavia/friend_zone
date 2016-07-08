@@ -1,8 +1,8 @@
 = div_for(@image) do
   .row
     .col-md-6
-      = image_tag(@image.file.url, class: "img-responsive center-block")
-    .col-md-3
+      = image_tag(@image.file.url, class: "img-responsive")
+    .col-md-6
       %ul.media-list
         %li.media
           .media-left
@@ -22,5 +22,6 @@
             remote: true, title: "Show what people say about this!",
             data: { "disable-with": "loading.." },
             class: "btn btn-sm btn-default"
-
+      %br
       .image-comments
+      .image-footer

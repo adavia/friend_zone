@@ -1,9 +1,9 @@
-var post = $("##{@commentable.class.name.downcase}_#{@commentable.id}");
+var commentable = $("##{@commentable.class.name.downcase}_#{@commentable.id}");
 - if @comment.errors.any?
-  post.find("#form-comment-content").html("#{ j render 'form', commentable: @commentable }");
+  commentable.find("#form-comment-content").html("#{ j render 'form', commentable: @commentable }");
 - else
-  post.find(".form-group").removeClass("has-error");
-  post.find("span.help-block").remove();
-  post.find(".default-message").remove();
-  post.find("#comment-list").prepend($("#{ j render @comment }").fadeIn(1000));
-  post.find("#new_comment")[0].reset();
+  commentable.find(".form-group").removeClass("has-error");
+  commentable.find("span.help-block").remove();
+  commentable.find(".default-message").remove();
+  commentable.find("#comment-list").prepend($("#{ j render @comment }").fadeIn(1000));
+  commentable.find("#new_comment")[0].reset();

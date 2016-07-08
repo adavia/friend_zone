@@ -1,3 +1,3 @@
-var post = $("##{@commentable.class.name.downcase}_#{@commentable.id}");
+var commentable = $("##{@commentable.class.name.downcase}_#{@commentable.id}");
 
-post.find(".post-footer").html('<div id="form-comment-content">#{ j render 'form', commentable: @commentable }</div>');
+commentable.find(".#{@commentable.class.name.downcase}-footer").html('<div id="form-comment-content">#{ j render 'form', commentable: @commentable }</div>');
