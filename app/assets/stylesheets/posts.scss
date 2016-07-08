@@ -25,30 +25,34 @@
     margin-top: 5px;
     margin-bottom: 0px;
   }
-  .media {
+}
+
+.media {
+  overflow: visible;
+  .media-body{
     overflow: visible;
-    .media-body{
-      overflow: visible;
-    }
   }
-  .media-heading {
-    margin-top: 5px;
-  }
-  .media-object {
-    @extend .img-responsive;
-    @extend .img-thumbnail;
-    width: 50px;
-    height: 50px;
-    display: block;
-    margin-right: 5px;
-  }
+}
+
+.media-heading {
+  margin-top: 5px;
+}
+
+.media-object {
+  @extend .img-responsive;
+  @extend .img-thumbnail;
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin-right: 5px;
 }
 
 .post-description {
   padding: 15px;
-  .stats {
-    margin-top: 15px;
-  }
+}
+
+.stats {
+  margin-top: 15px;
   .stat-item {
     display: inline-block;
     margin-right: 10px;

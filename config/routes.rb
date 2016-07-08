@@ -14,6 +14,11 @@ Rails.application.routes.draw do
     resources :images, only: [:show]
   end
 
+  resources :images, only: [] do
+    resource :like, only: [:create, :destroy]
+    resources :comments, only: [:index, :new, :create, :edit, :update, :destroy]
+  end
+
   resources :posts, only: [:index, :create, :edit, :update, :destroy] do
     resource :like, only: [:create, :destroy]
     resources :comments, only: [:index, :new, :create, :edit, :update, :destroy]

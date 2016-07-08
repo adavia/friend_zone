@@ -1,1 +1,26 @@
-= image_tag(@image.file.url, class: "img-responsive")
+= div_for(@image) do
+  .row
+    .col-md-6
+      = image_tag(@image.file.url, class: "img-responsive center-block")
+    .col-md-3
+      %ul.media-list
+        %li.media
+          .media-left
+            %a{href: "#"}
+              %img.media-object{alt: "User profile", src: "/assets/no_user.png"}
+          .media-body
+            %h5.media-heading
+              = link_to @image.user, @image.user
+            %h6.text-muted.time
+              = time_ago_in_words(@image.created_at)
+      .stats
+        .stat-item.stat-likes
+          = render "likes/like", likable: @image
+        .stat-item.stat-comments
+          = link_to fa_icon("comment", text: "#{@image.comments.count} Comments"),
+            [@image, :comments],
+            remote: true, title: "Show what people say about this!",
+            data: { "disable-with": "loading.." },
+            class: "btn btn-sm btn-default"
+
+      .image-comments

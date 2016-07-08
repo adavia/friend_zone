@@ -1,2 +1,2 @@
-var post = $("##{@likable.class.name.downcase}_#{@likable.id}");
-post.find(".stat-likes").html("#{ j render 'like', likable: @likable }");
+var likable = $("##{@likable.class.name.downcase}_#{@likable.id}");
+likable.find(".stat-likes").html("#{ j render 'like', likable: @likable }");
