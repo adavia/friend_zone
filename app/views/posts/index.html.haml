@@ -4,7 +4,7 @@
       .side-profile-header
       .side-profile-body
         = image_tag user_avatar(current_user), class: "side-profile-img"
-        %h4.text-center
+        %h3.text-center
           = link_to current_user.username, current_user
         %ul.side-profile-status
           = render "status", user: current_user
