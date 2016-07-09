@@ -21,10 +21,6 @@
 .post-heading {
   height: 65px;
   padding: 20px 15px;
-  h6.time {
-    margin-top: 5px;
-    margin-bottom: 0px;
-  }
 }
 
 .media {
@@ -32,10 +28,10 @@
   .media-body{
     overflow: visible;
   }
-}
-
-.media-heading {
-  margin-top: 5px;
+  h6.time {
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
 }
 
 .media-object {
