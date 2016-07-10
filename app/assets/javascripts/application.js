@@ -18,6 +18,7 @@
 //= require jquery-ui/autocomplete
 //= require fancybox
 //= require init
+//= require pagination
 //= require posts
 //= require images
 //= require users

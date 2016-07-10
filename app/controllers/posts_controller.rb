@@ -6,8 +6,13 @@ class PostsController < ApplicationController
   def index
     @posts = Post.
       where(user: current_user.timeline_user_ids).
-      includes(:user, :images, :likes)
+      includes(:user, :images, :likes).paginate(page: params[:page])
     @post = current_user.posts.build
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create

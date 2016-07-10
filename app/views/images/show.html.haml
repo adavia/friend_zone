@@ -23,8 +23,9 @@
             remote: true, title: "Show what people say about this!",
             data: { "disable-with": "loading.." },
             class: "btn btn-sm btn-default"
-        .stat-item.stat-default
-          = render "images/default", image: @image
+        - if @image.user == current_user
+          .stat-item.stat-default
+            = render "images/default", image: @image
 
       %br
       .image-comments

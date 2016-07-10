@@ -14,4 +14,6 @@ class Post < ApplicationRecord
   validates :user, presence: true
 
   default_scope -> { order(created_at: :desc) }
+
+  self.per_page = 12
 end

@@ -26,3 +26,8 @@
         - else
           .default-message NOTHING TO SHOW YET. SHARE WHAT YOU THINK!
 
+    - unless @posts.current_page == @posts.total_pages
+      #scrolling-content
+        = link_to "View More", root_path(page: @posts.current_page + 1),
+          remote: true, class: "btn btn-sm btn-primary"
+

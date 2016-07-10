@@ -34,3 +34,8 @@ $(document).on "submit", "[data-behavior~=submit-post]", (event) ->
   post = new App.Post @
   post.toggleButton(true, "Publishing..")
   post.submit()
+
+$(document).on "turbolinks:load", ->
+  return unless $(".posts.index").length > 0 && $('#scrolling-content').length > 0
+  post = new App.Pagination
+  post.loadResults()
