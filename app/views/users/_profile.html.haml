@@ -1,0 +1,41 @@
+%h5 Location
+%p.text-muted
+  = user.address
+.profile-map
+  = image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{user.latitude},#{user.longitude}&zoom=13&scale=false&size=400x200&maptype=roadmap&format=png&visual_refresh=true", class: "img-responsive"
+
+%h5 Personal information
+.row
+  .col-md-2.col-xs-3
+    %p
+      Gender
+    %p
+      Birthday
+    %p
+      Sign in
+  .col-md-10.col-xs-9
+    %p.text-muted
+      = fa_icon("#{user.gender}", text: user.gender.capitalize)
+    %p.text-muted
+      #{user.birthday.strftime("%d %B %Y")}, #{user.age}
+    %p.text-muted
+      #{time_ago_in_words(user.last_sign_in_at)} ago
+
+- if user == current_user
+  .profile-config
+    %h5
+      Settings
+      = link_to fa_icon('wrench'), edit_user_registration_path,
+        remote: true, class: "pull-right"
+    #profile-settings
+      .row
+        .col-md-2.col-xs-3
+          %p
+            Email
+          %p
+            Password
+        .col-md-10.col-xs-9
+          %p.text-muted
+            ******@******.com
+          %p.text-muted
+            **********
