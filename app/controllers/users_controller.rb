@@ -4,8 +4,6 @@ class UsersController < ApplicationController
   before_action :user_owner!, only: [:follow, :unfollow]
 
   def show
-    @posts = @user.posts.paginate(page: params[:page])
-    @images = @user.images.paginate(page: params[:page])
   end
 
   def follow
