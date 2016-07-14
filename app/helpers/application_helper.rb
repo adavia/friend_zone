@@ -20,7 +20,7 @@ module ApplicationHelper
     end
   end
 
-  def user_avatar(user)
+  def avatar(user)
     if user.images.default
       user.images.default.file.url(:thumb)
     else

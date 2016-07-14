@@ -8,7 +8,7 @@
         %li.media
           .media-left
             %a{href: "#"}
-              = image_tag user_avatar(@image.user), class: "media-object"
+              = image_tag avatar(@image.user), class: "media-object"
           .media-body
             %h5.media-heading
               = link_to @image.user, @image.user

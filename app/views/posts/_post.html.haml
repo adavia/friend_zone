@@ -3,8 +3,7 @@
     %ul.media-list
       %li.media
         .media-left
-          %a{href: "#"}
-            = image_tag user_avatar(post.user), class: "media-object"
+          = image_tag avatar(post.user), class: "media-object"
         .media-body
           - if post.user == current_user
             .btn-group.pull-right

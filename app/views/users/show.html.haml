@@ -3,7 +3,7 @@
     .col-md-3
       .wrapper
         .profile-img
-          = user_presenter.avatar
+          = image_tag avatar(@user), class: "img-responsive img-thumbnail"
         .profile-content
           %h3
             = @user.username
