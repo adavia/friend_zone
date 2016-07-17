@@ -1,37 +1,52 @@
-- present @user do |user_presenter|
-  .row
-    .col-md-3
-      .wrapper
-        .profile-img
-          = image_tag avatar(@user), class: "img-responsive img-thumbnail"
-        .profile-content
-          %h3
-            = @user.username
-          %span.text-muted
-            = @user.address
-          - if current_user != @user
-            .btn-toolbar{role: "toolbar",
-              "aria-label": "User actions toolbar"}
-              #profile-actions.btn-group{role: "toolbar",
-                "aria-label": "Profile actions"}
-                = render "actions", user: @user
-              #profile-message.btn-group{role: "toolbar",
-                "aria-label": "Profile message"}
-                %button.btn.btn-sm.btn-default Send a message
-    .col-sm-6
-      .wrapper
-        .profile-menu
-          %ul.nav.nav-tabs
-            %li{role: "presentation",
-              class: active_link(user_path(@user))}
-              = link_to "Feed", @user
-            %li{role: "presentation",
-              class: active_link(user_path(@user, tab: :profile))}
-              = link_to "Profile Information", [@user, tab: :profile]
-            %li{role: "presentation",
-              class: active_link(user_path(@user, tab: :images))}
-              = link_to "Images", [@user, tab: :images]
+.row
+  .col-md-3
+    .wrapper
+      .profile-img
+        = image_tag avatar(@user), class: "img-responsive img-thumbnail"
+      .profile-content
+        %h3
+          = @user.username
+        %span.text-muted
+          = @user.address
+        - if current_user != @user
+          .btn-toolbar{role: "toolbar",
+            "aria-label": "User actions toolbar"}
+            #profile-actions.btn-group{role: "toolbar",
+              "aria-label": "Profile actions"}
+              = render "actions", user: @user
+            #profile-message.btn-group{role: "toolbar",
+              "aria-label": "Profile message"}
+              %button.btn.btn-sm.btn-default Send a message
+  .col-sm-6
+    .wrapper
+      .tab-menu
+        %ul.nav.nav-tabs
+          %li{role: "presentation",
+            class: active_link(user_path(@user))}
+            = link_to "Feed", @user
+          %li{role: "presentation",
+            class: active_link(user_path(@user, tab: :profile))}
+            = link_to "Profile Information", [@user, tab: :profile]
+          %li{role: "presentation",
+            class: active_link(user_path(@user, tab: :images))}
+            = link_to "Images", [@user, tab: :images]
 
-
-        = user_presenter.tabs
-
+      .tab-content
+        - if params[:tab] == "profile"
+          #tab-profile
+            = render "profile", user: @user
+        - elsif params[:tab] == "images"
+          #tab-images
+            = render @images
+          - unless @images.current_page == @images.total_pages
+            #scrolling-content
+              = link_to "View More",
+                user_path(page: @images.current_page + 1, tab: :images),
+                remote: true, class: "btn btn-sm btn-primary"
+        - else
+          #tab-posts
+            = render @posts
+          - unless @posts.current_page == @posts.total_pages
+            #scrolling-content
+              = link_to "View More", user_path(page: @posts.current_page + 1),
+                remote: true, class: "btn btn-sm btn-primary"

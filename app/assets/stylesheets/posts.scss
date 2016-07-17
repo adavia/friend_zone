@@ -47,6 +47,16 @@
   padding: 15px;
 }
 
+.post-images {
+  margin-top: 15px;
+  .row {
+    margin:0;
+    > div {
+      padding:0;
+    }
+  }
+}
+
 .stats {
   margin-top: 15px;
   .stat-item {

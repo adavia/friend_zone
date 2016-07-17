@@ -1,0 +1,14 @@
+- if params[:tab] == "images"
+  $("#tab-images").append("#{ j render @images }");
+  - if @images.next_page
+    $("#scrolling-content").html("#{ j link_to 'View More', user_path(page: @images.current_page + 1, tab: :images), class: 'btn btn-sm btn-primary', remote: true }");
+  - else
+    $(window).off("scroll");
+    $("#scrolling-content").remove();
+- else
+  $("#tab-posts").append("#{ j render @posts }");
+  - if @posts.next_page
+    $("#scrolling-content").html("#{ j link_to 'View More', user_path(page: @posts.current_page + 1), class: 'btn btn-sm btn-primary', remote: true }");
+  - else
+    $(window).off("scroll");
+    $("#scrolling-content").remove();

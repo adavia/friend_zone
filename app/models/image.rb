@@ -9,7 +9,7 @@ class Image < ApplicationRecord
 
   has_many :comments, as: :commentable, dependent: :destroy
 
-  self.per_page = 6
+  self.per_page = 3
 
   def make_default!(user)
     Image.where(user: user).update_all(default: false)
