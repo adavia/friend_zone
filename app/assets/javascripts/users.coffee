@@ -23,3 +23,8 @@ class App.User
 $(document).on "turbolinks:load", ->
   user = new App.User $("#user_address")
   user.geolocation()
+
+$(document).on "turbolinks:load", ->
+  return unless $(".users.show").length > 0 && $('#scrolling-content').length > 0
+  user = new App.Pagination
+  user.loadResults()
