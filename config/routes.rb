@@ -27,4 +27,8 @@ Rails.application.routes.draw do
     resource :like, only: [:create, :destroy]
     resources :comments, only: [:index, :new, :create, :edit, :update, :destroy]
   end
+
+  resources :conversations, only: [:index, :create] do
+    resources :messages, only: [:index, :show, :new, :create]
+  end
 end
