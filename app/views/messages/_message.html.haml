@@ -1,0 +1,17 @@
+= content_tag :li, class: "#{self_or_other(message)} clearfix" do
+  = content_tag :span, class: "conversation-img pull-#{self_or_other(message)}" do
+    = image_tag avatar(message.user), class: "img-circle"
+  .conversation-body.clearfix
+    .header
+      - if message.user == current_user
+        %strong.primary-font
+          = message.user.username
+        %small.pull-right.text-muted
+          = fa_icon("clock-o", text: time_ago_in_words(message.created_at))
+      - else
+        %small.text-muted
+          = fa_icon("clock-o", text: time_ago_in_words(message.created_at))
+        %strong.primary-font.pull-right
+          = message.user.username
+    %p
+      = message.body

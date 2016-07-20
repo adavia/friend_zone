@@ -16,7 +16,10 @@
               = render "actions", user: @user
             #profile-message.btn-group{role: "toolbar",
               "aria-label": "Profile message"}
-              %button.btn.btn-sm.btn-default Send a message
+              = link_to "Send a message",
+                conversations_path(sender_id: current_user, recipient_id: @user),
+                method: :post, class: "btn btn-sm btn-default",
+                data: { behavior: "load-conversation", remote: true }
   .col-sm-6
     .wrapper
       .tab-menu

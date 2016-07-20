@@ -70,23 +70,25 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def post_owner!
-    authenticate_user!
-
-    if @post.user != current_user
-      render js: "alert('You are not allowed to do this!');"
-    end
-  end
-
   def upload_files
-    if params[:images_attributes]
-      params[:images_attributes].each do |image|
-        @post.images.create(file: image[:file])
+    images = params[:images][:file].reject(&:blank?)
+
+    if images
+      images.each do |image|
+        @post.images.create!(file: image, user_id: current_user.id)
       end
     end
   end
 
+  def post_owner!
+    authenticate_user!
+
+    if @post.user != current_user
+      render js: "You are not allowed to do this!"
+    end
+  end
+
   def post_params
-    params.require(:post).permit(:body, images_attributes: [:file])
+    params.require(:post).permit(:body, images_attributes: [:file, :user_id])
   end
 end

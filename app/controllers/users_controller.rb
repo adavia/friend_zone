@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     authenticate_user!
 
     if @user == current_user
-      render js: "alert('You are not allowed to do this!');"
+      render js: "You are not allowed to do this!"
     end
   end
 end

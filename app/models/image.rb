@@ -3,7 +3,7 @@ class Image < ApplicationRecord
 
   belongs_to :post, optional: true
 
-  belongs_to :user
+  belongs_to :user, optional: true
 
   has_many :likes, as: :likable, dependent: :destroy
 

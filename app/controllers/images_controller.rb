@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_imageable
-  before_action :user_owner!, only: [:show]
+  #before_action :user_owner!, only: [:show]
 
   def show
     render layout: !request.xhr?
@@ -24,7 +24,7 @@ class ImagesController < ApplicationController
     authenticate_user!
 
     if @image.user != current_user
-      render js: "alert('You are not allowed to do this!');"
+      render js: "You are not allowed to do this!"
     end
   end
 end

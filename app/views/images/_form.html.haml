@@ -1,3 +1,3 @@
-= f.file_field :file, label: false, multiple: true,
-  name: "post[images_attributes][][file]",
-  data: { behavior: "upload-post-image" }
+- if f.object.new_record?
+  = f.file_field :file, label: false, multiple: true, name: "images[file][]",
+    data: { behavior: "upload-post-image" }

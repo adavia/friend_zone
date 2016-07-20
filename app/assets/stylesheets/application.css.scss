@@ -11,6 +11,7 @@
 @import "posts";
 @import "images";
 @import "comments";
+@import "conversations";
 
 body {
   padding-top: 60px;
@@ -104,4 +105,8 @@ form {
 #scrolling-content {
   @extend .text-center;
   margin-bottom: 15px;
+}
+
+.fancybox-inner {
+  overflow-x: hidden !important;
 }

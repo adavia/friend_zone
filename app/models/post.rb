@@ -2,10 +2,10 @@ class Post < ApplicationRecord
   belongs_to :user
 
   has_many :images, dependent: :destroy
-  accepts_nested_attributes_for :images, reject_if: :all_blank
+  accepts_nested_attributes_for :images
 
   has_many :likes, as: :likable, dependent: :destroy
-  validates_length_of :images, maximum: 3, message: "You can upload 4 files max."
+  validates_length_of :images, maximum: 3, message: "You can upload 3 files max."
 
   has_many :comments, as: :commentable, dependent: :destroy
 

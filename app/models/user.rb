@@ -20,6 +20,8 @@ class User < ApplicationRecord
 
   has_many :followers, through: :reverse_subscriptions
 
+  has_many :messages
+
   validates :username, presence: true, uniqueness: true
   validates :gender, presence: true
   validates :gender, inclusion: { in: %w(male female),

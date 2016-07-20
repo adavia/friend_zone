@@ -1,0 +1,8 @@
+.row
+  .col-md-6.col-md-offset-3
+    .wrapper
+      .conversation-box
+        %ul.conversation#messages-list
+          = render @conversation.messages
+      #conversation-form
+        = render "messages/form", conversation: @conversation

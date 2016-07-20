@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
-  resources :conversations, only: [:index, :create] do
+  resources :conversations, only: [:index, :show, :create] do
     resources :messages, only: [:index, :show, :new, :create]
   end
 end

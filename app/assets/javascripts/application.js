@@ -22,3 +22,4 @@
 //= require posts
 //= require images
 //= require users
+//= require conversations
