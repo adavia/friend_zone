@@ -1,4 +1,4 @@
-class App.User
+class Application.User
   constructor: (el) ->
     @el = $(el)
 
@@ -21,10 +21,10 @@ class App.User
           @el.val("")
 
 $(document).on "turbolinks:load", ->
-  user = new App.User $("#user_address")
+  user = new Application.User $("#user_address")
   user.geolocation()
 
 $(document).on "turbolinks:load", ->
   return unless $(".users.show").length > 0 && $('#scrolling-content').length > 0
-  user = new App.Pagination
+  user = new Application.Pagination
   user.loadResults()

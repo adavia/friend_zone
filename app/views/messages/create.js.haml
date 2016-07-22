@@ -1,7 +1,0 @@
-- if @message.errors.any?
-  $("#conversation-form").html("#{ j render 'form', conversation: @conversation }");
-- else
-  $("#new_message").find(".form-group").removeClass("has-error");
-  $("#new_message").find("span.help-block").remove();
-  $("#messages-list").append($("#{ j render @message }").fadeIn(1000));
-  $("#new_message")[0].reset();

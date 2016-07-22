@@ -1,4 +1,4 @@
-class App.Image
+class Application.Image
   constructor: (el) ->
     @el = $(el)
 
@@ -38,7 +38,7 @@ class App.Image
 
 $(document).on "click", "[data-behavior~=load-image]", (event) ->
   event.preventDefault()
-  image = new App.Image @
+  image = new Application.Image @
   image.renderImage()
 
 

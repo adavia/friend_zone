@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-class App.Post
+class Application.Post
   constructor: (el) ->
     @el = $(el)
 
@@ -25,17 +25,17 @@ class App.Post
 
 $(document).on "change", "[data-behavior~=upload-post-image]", (event) ->
   return unless $(".posts.index").length > 0
-  post = new App.Image @
+  post = new Application.Image @
   post.previewImages()
 
 $(document).on "submit", "[data-behavior~=submit-post]", (event) ->
   return unless $(".posts.index").length > 0
   event.preventDefault()
-  post = new App.Post @
+  post = new Application.Post @
   post.toggleButton(true, "Publishing..")
   post.submit()
 
 $(document).on "turbolinks:load", ->
   return unless $(".posts.index").length > 0 && $('#scrolling-content').length > 0
-  post = new App.Pagination
+  post = new Application.Pagination
   post.loadResults()

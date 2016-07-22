@@ -30,7 +30,7 @@ class ConversationsController < ApplicationController
   private
 
   def set_conversation
-    @conversation = Conversation.find(params[:id])
+    @conversation = Conversation.includes(:messages).find(params[:id])
   end
 
   def interlocutor(conversation)
