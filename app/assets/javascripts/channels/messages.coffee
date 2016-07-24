@@ -1,15 +1,13 @@
-App.Messages = App.cable.subscriptions.create {
-    channel: "MessagesChannel"
-    conversation_id: $("#messages-list").data("conversation-id")
-  },
+$(document).on "turbolinks:load", ->
 
-  connected: ->
-    console.log "hi"
-    # Called when the subscription is ready for use on the server
+  conversation = new Application.Conversation
 
-  disconnected: ->
-    # Called when the subscription has been terminated by the server
+  content = $(".conversations.show")
 
-  received: (data) ->
-    $("#messages-list").append(data["message"])
-    $("#new_message")[0].reset();
+  messages = $("#messages-list")
+
+  if content.length > 0
+    conversation.loadChannel(messages)
+    messages.scrollTop(messages.prop("scrollHeight"))
+  else
+    conversation.loadChannel(messages).unsubscribe()

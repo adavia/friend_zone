@@ -7,8 +7,6 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @reciever = interlocutor(@conversation)
-
     render layout: !request.xhr?
   end
 
@@ -31,10 +29,6 @@ class ConversationsController < ApplicationController
 
   def set_conversation
     @conversation = Conversation.includes(:messages).find(params[:id])
-  end
-
-  def interlocutor(conversation)
-    current_user == conversation.recipient ? conversation.sender : conversation.recipient
   end
 
   def conversation_params
