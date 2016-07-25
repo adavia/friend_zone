@@ -3,10 +3,18 @@ class ConversationsController < ApplicationController
   before_action :set_conversation, only: [:show]
 
   def index
-    @conversations = Conversation.all
+    @conversations = Conversation.includes(:messages).
+      involving(current_user).
+      where(messages: { read: false })
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
+    @messages = @conversation.messages.last(15)
     render layout: !request.xhr?
   end
 

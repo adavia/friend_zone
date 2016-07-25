@@ -24,6 +24,16 @@
         - if user_signed_in?
           %p.navbar-text
             Signed in as #{current_user}
+          %li.dropdown
+            = link_to conversations_path,
+              html_options = {"aria-expanded": false,
+              "aria-haspopup": true, "data-toggle": "dropdown",
+              "data-behavior": "load-conversations",
+              role: "button", class: "dropdown-toggle"} do
+
+              msg
+              %span.caret
+            %ul.dropdown-menu#conversations-list
           %li
             = link_to "Sign out",
               destroy_user_session_path, method: :delete

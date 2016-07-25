@@ -1,4 +1,15 @@
 class Application.Conversation
+  constructor: (el) ->
+    @el = $(el)
+
+  getConversations: ->
+    $.ajax
+      url: @el.attr("href")
+      type: "GET"
+      dataType: "script"
+      beforeSend: (jqXHR) =>
+        console.log "loading.."
+
   loadChannel: (messages) ->
     App.cable.subscriptions.create {
       channel: "MessagesChannel"
@@ -19,7 +30,7 @@ class Application.Conversation
   renderConversation: (data) ->
     $.fancybox
       parent: "body"
-      href: "/conversations/#{data.conversation_id}",
+      href: "/conversations/#{data.conversation_id}"
       type: "ajax"
       ajax:
         complete: (jqXHR, textStatus) =>
@@ -32,4 +43,8 @@ class Application.Conversation
 $(document).on "ajax:success", "[data-behavior~=load-conversation]", (e, data) ->
   conversation = new Application.Conversation
   conversation.renderConversation(data)
+
+$(document).on "click", "[data-behavior~=load-conversations]", (event) ->
+  conversation = new Application.Conversation @
+  conversation.getConversations()
 

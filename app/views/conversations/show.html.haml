@@ -3,6 +3,6 @@
     .wrapper
       .conversation-box
         %ul.conversation#messages-list{"data-conversation-id": "#{@conversation.id}"}
-          = render @conversation.messages
+          = render @messages
       #conversation-form
         = render "messages/form", conversation: @conversation
