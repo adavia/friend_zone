@@ -2,6 +2,27 @@
   padding: 5px;
 }
 
+#conversations-list {
+  min-width: 250px;
+  font-size: 13px;
+  li {
+    padding: 10px;
+    border-bottom: 1px solid #B3A9A9;
+    img {
+      width: 35px;
+      height: 35px;
+      float: left;
+      margin-right: 10px;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  li:last-child {
+    border-bottom: none;
+  }
+}
+
 .conversation {
   list-style: none;
   padding: 15px;

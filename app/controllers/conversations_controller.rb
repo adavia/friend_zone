@@ -3,9 +3,10 @@ class ConversationsController < ApplicationController
   before_action :set_conversation, only: [:show]
 
   def index
-    @conversations = Conversation.includes(:messages).
+    @conversations = Conversation.joins(:messages).
       involving(current_user).
-      where(messages: { read: false })
+      order("messages.created_at DESC").
+      to_a.uniq
 
     respond_to do |format|
       format.html

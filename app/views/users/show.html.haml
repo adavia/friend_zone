@@ -40,7 +40,8 @@
             = render "profile", user: @user
         - elsif params[:tab] == "images"
           #tab-images
-            = render @images
+            = render(@images) || content_tag(:div, class: "default-message") do
+              NO IMAGES TO SHOW!
           - unless @images.current_page == @images.total_pages
             #scrolling-content
               = link_to "View More",
@@ -48,7 +49,8 @@
                 remote: true, class: "btn btn-sm btn-primary"
         - else
           #tab-posts
-            = render @posts
+            = render(@posts) || content_tag(:div, class: "default-message") do
+              NO CURRENT POSTS TO SHOW!
           - unless @posts.current_page == @posts.total_pages
             #scrolling-content
               = link_to "View More", user_path(page: @posts.current_page + 1),

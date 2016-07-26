@@ -8,7 +8,7 @@ class Application.Conversation
       type: "GET"
       dataType: "script"
       beforeSend: (jqXHR) =>
-        console.log "loading.."
+        $("#conversations-list").html('<div class="default-message">loading..</div>')
 
   loadChannel: (messages) ->
     App.cable.subscriptions.create {

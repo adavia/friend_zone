@@ -31,9 +31,10 @@
               "data-behavior": "load-conversations",
               role: "button", class: "dropdown-toggle"} do
 
-              msg
+              = fa_icon("comment")
               %span.caret
-            %ul.dropdown-menu#conversations-list
+            %ul.dropdown-menu
+              #conversations-list
           %li
             = link_to "Sign out",
               destroy_user_session_path, method: :delete
