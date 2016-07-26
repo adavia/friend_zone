@@ -22,6 +22,8 @@ class User < ApplicationRecord
 
   has_many :messages
 
+  has_many :notifications, foreign_key: :recipient_id
+
   validates :username, presence: true, uniqueness: true
   validates :gender, presence: true
   validates :gender, inclusion: { in: %w(male female),

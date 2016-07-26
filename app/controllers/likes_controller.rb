@@ -6,6 +6,8 @@ class LikesController < ApplicationController
     @like = @likable.likes.build(user: current_user)
     @like.save
 
+    create_notification
+
     respond_to do |format|
       format.js
     end
@@ -25,5 +27,12 @@ class LikesController < ApplicationController
   def set_likable
     klass = [Image, Post].detect { |c| params["#{c.name.underscore}_id"] }
     @likable = klass.find(params["#{klass.name.underscore}_id"])
+  end
+
+  def create_notification
+    if @likable.user != current_user
+      Notification.create!(recipient: @likable.user, sender: current_user,
+        action: "liked", notifiable: @likable)
+    end
   end
 end

@@ -27,10 +27,10 @@ class Application.Conversation
       messages.scrollTop(messages.prop("scrollHeight"))
       $("#new_message")[0].reset();
 
-  renderConversation: (data) ->
+  renderConversation: (data=false) ->
     $.fancybox
       parent: "body"
-      href: "/conversations/#{data.conversation_id}"
+      href: if data then "/conversations/#{data.conversation_id}" else @el.attr("href")
       type: "ajax"
       ajax:
         complete: (jqXHR, textStatus) =>
@@ -41,10 +41,17 @@ class Application.Conversation
         @loadChannel($("#messages-list")).unsubscribe()
 
 $(document).on "ajax:success", "[data-behavior~=load-conversation]", (e, data) ->
+  return unless $(".users.show").length > 0
   conversation = new Application.Conversation
   conversation.renderConversation(data)
 
-$(document).on "click", "[data-behavior~=load-conversations]", (event) ->
+$(document).on "click", "[data-behavior~=load-conversation-list]", (event) ->
   conversation = new Application.Conversation @
   conversation.getConversations()
+  event.preventDefault()
+
+$(document).on "click", "[data-behavior~=render-conversation]", (event) ->
+  conversation = new Application.Conversation @
+  conversation.renderConversation()
+  event.preventDefault()
 

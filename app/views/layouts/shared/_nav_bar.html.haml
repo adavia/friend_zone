@@ -28,13 +28,24 @@
             = link_to conversations_path,
               html_options = {"aria-expanded": false,
               "aria-haspopup": true, "data-toggle": "dropdown",
-              "data-behavior": "load-conversations",
+              "data-behavior": "load-conversation-list",
               role: "button", class: "dropdown-toggle"} do
 
               = fa_icon("comment")
               %span.caret
             %ul.dropdown-menu
-              #conversations-list
+              #conversations-list.navdrop-content
+          %li.dropdown
+            = link_to notifications_path,
+              html_options = {"aria-expanded": false,
+              "aria-haspopup": true, "data-toggle": "dropdown",
+              "data-behavior": "load-notifications",
+              role: "button", class: "dropdown-toggle"} do
+
+              = fa_icon("bullhorn")
+              %span.caret
+            %ul.dropdown-menu
+              #notifications-list.navdrop-content
           %li
             = link_to "Sign out",
               destroy_user_session_path, method: :delete

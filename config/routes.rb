@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :images, only: [] do
+  resources :images, only: [:show] do
     resource :like, only: [:create, :destroy]
     resources :comments, only: [:index, :new, :create, :edit, :update, :destroy]
   end
@@ -33,5 +33,11 @@ Rails.application.routes.draw do
 
   resources :conversations, only: [:index, :show, :create] do
     resources :messages, only: [:create]
+  end
+
+  resources :notifications, only: [:index] do
+    collection do
+      post :read
+    end
   end
 end

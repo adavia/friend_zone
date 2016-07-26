@@ -23,4 +23,5 @@
 //= require images
 //= require users
 //= require conversations
+//= require notifications
 //= require cable

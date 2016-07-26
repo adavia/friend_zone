@@ -27,6 +27,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        create_notification
         format.js   {}
         format.json {
           render json: @comment, status: :created, location: @comment
@@ -83,6 +84,13 @@ class CommentsController < ApplicationController
 
     if @comment.user != current_user
       render js: "You are not allowed to do this!"
+    end
+  end
+
+  def create_notification
+    if @commentable.user != current_user
+      Notification.create!(recipient: @commentable.user, sender: current_user,
+        action: "commented", notifiable: @commentable)
     end
   end
 
