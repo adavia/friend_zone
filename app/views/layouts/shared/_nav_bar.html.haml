@@ -32,6 +32,7 @@
               role: "button", class: "dropdown-toggle"} do
 
               = fa_icon("comment")
+              %span#unread-messages
               %span.caret
             %ul.dropdown-menu
               #conversations-list.navdrop-content
@@ -43,6 +44,7 @@
               role: "button", class: "dropdown-toggle"} do
 
               = fa_icon("bullhorn")
+              %span#unread-notifications
               %span.caret
             %ul.dropdown-menu
               #notifications-list.navdrop-content

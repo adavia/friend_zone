@@ -4,7 +4,7 @@ class Application.Notification
 
   getNotifications: ->
     $.ajax
-      url: "#{@el.attr("href")}.json"
+      url: @el.attr("href")
       dataType: "JSON"
       method: "GET"
       success: @handleSuccess
@@ -23,15 +23,8 @@ class Application.Notification
     container = $("#notifications-list")
 
     items = $.map data, (noti) ->
-      """
-        <li>
-          <a class='dropdown-item' href='noti.notifiable.path'>
-            <strong>#{noti.sender}</strong>
-            #{noti.action}
-            #{noti.notifiable.type}
-          </a>
-        </li>
-      """
+      noti.template
+
     if items.length > 0
       container.html(items)
     else

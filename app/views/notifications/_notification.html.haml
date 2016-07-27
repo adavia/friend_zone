@@ -1,0 +1,7 @@
+%li
+  = link_to polymorphic_path(notification.notifiable) do
+    %strong
+      = notification.sender.username
+    = notification.action
+    your
+    = notification.notifiable.class.to_s.downcase
