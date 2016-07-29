@@ -1,0 +1,7 @@
+%li
+  = link_to message.conversation do
+    = image_tag avatar(message.user), class: "img-circle"
+    %strong
+      = message.user.username
+    %p
+      = truncate message.body

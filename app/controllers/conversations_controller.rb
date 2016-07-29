@@ -2,21 +2,8 @@ class ConversationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_conversation, only: [:show]
 
-  def index
-    @conversations = Conversation.joins(:messages).
-      involving(current_user).
-      order("messages.created_at DESC").
-      to_a.uniq
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-
   def show
     @messages = @conversation.messages.last(15)
-    render layout: !request.xhr?
   end
 
   def create
@@ -28,8 +15,8 @@ class ConversationsController < ApplicationController
     end
 
     respond_to do |format|
-      format.json {
-        render json: { conversation_id: @conversation.id }
+      format.html {
+        redirect_to @conversation
       }
     end
   end

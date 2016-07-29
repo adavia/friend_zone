@@ -18,8 +18,7 @@
               "aria-label": "Profile message"}
               = link_to "Send a message",
                 conversations_path(sender_id: current_user, recipient_id: @user),
-                method: :post, class: "btn btn-sm btn-default",
-                data: { behavior: "load-conversation", remote: true }
+                method: :post, class: "btn btn-sm btn-default"
   .col-sm-6
     .wrapper
       .tab-menu

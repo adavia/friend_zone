@@ -31,11 +31,17 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
-  resources :conversations, only: [:index, :show, :create] do
+  resources :conversations, only: [:show, :create] do
     resources :messages, only: [:create]
   end
 
-  resources :notifications, only: [:index] do
+  resources :messages, only: [] do
+    collection do
+      post :read
+    end
+  end
+
+  resources :notifications, only: [] do
     collection do
       post :read
     end
