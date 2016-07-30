@@ -1,0 +1,8 @@
+- if conversation.messages.any?
+  %li
+    = link_to conversation do
+      = image_tag avatar(message_interlocutor(conversation)), class: "img-circle"
+      %strong
+        = message_interlocutor(conversation).username
+      %p
+        = truncate conversation.messages.last.body

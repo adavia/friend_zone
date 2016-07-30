@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
-  resources :conversations, only: [:show, :create] do
+  resources :conversations, only: [:index, :show, :create] do
     resources :messages, only: [:create]
   end
 
@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :notifications, only: [] do
+  resources :notifications, only: [:index] do
     collection do
       post :read
     end

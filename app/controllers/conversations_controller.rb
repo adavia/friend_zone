@@ -2,6 +2,13 @@ class ConversationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_conversation, only: [:show]
 
+  def index
+    @conversations = Conversation.joins(:messages).
+      involving(current_user).
+      order("messages.created_at DESC").
+      to_a.uniq
+  end
+
   def show
     @messages = @conversation.messages.last(15)
   end

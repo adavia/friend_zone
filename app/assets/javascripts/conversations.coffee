@@ -1,9 +1,9 @@
-class Application.Notification
+class Application.Conversation
   constructor: (el) ->
     @el = $(el)
-    @container = $("#notifications-list")
+    @container = $("#conversations-list")
 
-  getNotifications: ->
+  getConversations: ->
     $.ajax
       url: @el.attr("href")
       type: "GET"
@@ -15,13 +15,13 @@ class Application.Notification
 
   markAsRead: ->
     $.ajax
-      url: "/notifications/read"
+      url: "/messages/read"
       dataType: "JSON"
       method: "POST"
       success: ->
-        $("#unread-notifications").text("")
+        $("#unread-conversations").text("")
 
-$(document).on "click", "[data-behavior~=notifications-link]", (event) ->
-  noti = new Application.Notification @
-  noti.getNotifications()
+$(document).on "click", "[data-behavior~=conversations-link]", (event) ->
+  msg = new Application.Conversation @
+  msg.getConversations()
   event.preventDefault()

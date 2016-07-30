@@ -24,29 +24,27 @@
         - if user_signed_in?
           %p.navbar-text
             Signed in as #{current_user}
-          = content_tag :li, class: "dropdown",
-            data: { behavior: "messages", messages: render(template: "messages/index", formats: [:json])} do
-            = link_to "#",
+          %li.dropdown
+            = link_to conversations_path,
               html_options = {"aria-expanded": false,
               "aria-haspopup": true, "data-toggle": "dropdown",
-              "data-behavior": "messages-link",
+              "data-behavior": "conversations-link",
               role: "button", class: "dropdown-toggle"} do
-
               = fa_icon("comment")
-              %span#unread-messages.label.label-danger
+              %span#unread-conversations.label.label-danger
+                = @unread_conversations if @unread_conversations > 0
               %span.caret
             %ul.dropdown-menu
-              #messages-list.navdrop-content
-          = content_tag :li, class: "dropdown",
-            data: { behavior: "notifications", notifications: render(template: "notifications/index", formats: [:json])} do
-            = link_to "#",
+              #conversations-list.navdrop-content
+          %li.dropdown
+            = link_to notifications_path,
               html_options = {"aria-expanded": false,
               "aria-haspopup": true, "data-toggle": "dropdown",
               "data-behavior": "notifications-link",
               role: "button", class: "dropdown-toggle"} do
-
               = fa_icon("bullhorn")
               %span#unread-notifications.label.label-danger
+                = @unread_notifications if @unread_notifications > 0
               %span.caret
             %ul.dropdown-menu
               #notifications-list.navdrop-content

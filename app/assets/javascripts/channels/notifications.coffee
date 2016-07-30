@@ -6,11 +6,10 @@ App.notifications = App.cable.subscriptions.create "NotificationsChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    #$(".default-message").remove() if $(".default-message").length
-
-    unread = parseInt($("#unread-notifications").text()) || 0
-    $("#unread-notifications").text(unread += 1)
-
-    $("#notifications-list").prepend(data["notification"])
-
+    if data["notification"]
+      unread = parseInt($("#unread-notifications").text()) || 0
+      $("#unread-notifications").text(unread += 1)
+    else if data["message"]
+      unread = parseInt($("#unread-messages").text()) || 0
+      $("#unread-messages").text(unread += 1)
     # Called when there's incoming data on the websocket for this channel

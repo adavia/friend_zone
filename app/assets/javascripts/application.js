@@ -22,6 +22,6 @@
 //= require posts
 //= require images
 //= require users
-//= require messages
 //= require notifications
+//= require conversations
 //= require cable
