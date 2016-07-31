@@ -5,6 +5,8 @@
       "http-equiv": "Content-Type"}
     %meta{name: "viewport",
       content: "width=device-width, initial-scale=1"}
+    - if user_signed_in?
+      = tag :meta, name: "current_user", data: { id: current_user.id }
     %title
       - if content_for?(:title)
         = yield(:title)
