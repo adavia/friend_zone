@@ -12,9 +12,8 @@ class ApplicationController < ActionController::Base
 
   def set_unread_conversations
     @unread_conversations = Conversation.joins(:messages).
-      involving(current_user).
-      where("messages.read_at": nil).
-      where.not("messages.user_id": current_user).
-      to_a.uniq.count
+    involving(current_user).
+    where.not(messages: { user_id: current_user }).
+    where(messages: { read_at: nil }).count
   end
 end

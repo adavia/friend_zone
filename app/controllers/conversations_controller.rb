@@ -1,16 +1,17 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_conversation, only: [:show]
+  before_action :conversation_owner!, only: [:show]
 
   def index
     @conversations = Conversation.joins(:messages).
       involving(current_user).
-      order("messages.created_at DESC").
-      to_a.uniq
+      group("conversations.id").
+      order("max(messages.created_at) DESC")
   end
 
   def show
-    @messages = @conversation.messages.last(15)
+    @messages = @conversation.messages.order(created_at: :DESC).limit(12).reverse
   end
 
   def create
@@ -32,6 +33,14 @@ class ConversationsController < ApplicationController
 
   def set_conversation
     @conversation = Conversation.includes(:messages).find(params[:id])
+  end
+
+  def conversation_owner!
+    authenticate_user!
+
+    if ![@conversation.sender, @conversation.recipient].include? current_user
+      render js: "alert('You are not allowed to do this!')"
+    end
   end
 
   def conversation_params

@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
   end
 
   def read
-    conversations = Conversation.joins(:messages).involving(current_user)
+    conversations = Conversation.involving(current_user)
     conversations.each do |conversation|
       messages = conversation.messages.recipient_unread(current_user)
       messages.update_all(read_at: Time.zone.now) if messages.any?

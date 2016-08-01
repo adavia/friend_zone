@@ -31,7 +31,7 @@
               "data-behavior": "conversations-link",
               role: "button", class: "dropdown-toggle"} do
               = fa_icon("comment")
-              %span#unread-conversations.label.label-danger
+              %strong#unread-conversations.text-danger
                 = @unread_conversations if @unread_conversations > 0
               %span.caret
             %ul.dropdown-menu
@@ -43,7 +43,7 @@
               "data-behavior": "notifications-link",
               role: "button", class: "dropdown-toggle"} do
               = fa_icon("bullhorn")
-              %span#unread-notifications.label.label-danger
+              %strong#unread-notifications.text-danger
                 = @unread_notifications if @unread_notifications > 0
               %span.caret
             %ul.dropdown-menu
